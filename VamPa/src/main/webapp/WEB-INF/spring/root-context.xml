@@ -4,6 +4,17 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+ 		<property name="driverClassName" value="oracle.jdbc.pool.OracleDataSource"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@Localhost:1521:XE"></property> 
+		<property name="username" value="c##vam"></property>
+		<property name="password" value="1234"></property>
+	</bean>	
+	
+	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
 	
 	<context:component-scan base-package="com.vam.sample"></context:component-scan>
 	

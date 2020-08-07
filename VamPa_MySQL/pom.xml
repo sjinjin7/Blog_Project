@@ -117,6 +117,14 @@
 		    <version>8.0.18</version>
 		</dependency>
 
+		<!-- HikariCP Connection pool -->
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>3.4.2</version>
+		</dependency>	
+
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>

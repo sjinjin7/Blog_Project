@@ -6,8 +6,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
- 		<property name="driverClassName" value="oracle.jdbc.pool.OracleDataSource"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@Localhost:1521:XE"></property> 
+ 		<!-- <property name="driverClassName" value="oracle.jdbc.pool.OracleDataSource"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@Localhost:1521:XE"></property> -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
 		<property name="username" value="c##vam"></property>
 		<property name="password" value="1234"></property>
 	</bean>	

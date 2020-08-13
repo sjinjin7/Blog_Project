@@ -24,7 +24,7 @@
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
 				<div class="pw_input_box">
-					<input class="pw_iput">
+					<input class="pw_input">
 				</div>
 			</div>
 			<div class="pwck_wrap">

@@ -48,6 +48,16 @@
 	border:none;
 	font-size:28px;
 }
+	/* 중복아이디 존재하지 않는경우 */
+	.id_input_re_1{
+		color : green;
+		display : none;
+	}
+	/* 중복아이디 존재하는 경우 */
+	.id_input_re_2{
+		color : red;
+		display : none;
+	}
 
 /* 비밀번호 영역 */
 .pw_wrap{

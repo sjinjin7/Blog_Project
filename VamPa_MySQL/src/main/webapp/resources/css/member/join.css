@@ -156,6 +156,12 @@
     width: 61%;
     float: left;
 }
+#mail_check_input_box_false{
+    background-color:#ebebe4;
+}
+#mail_check_input_box_true{
+    background-color:white;
+}
 .mail_check_input{
 	width:100%;
 	height:100%;

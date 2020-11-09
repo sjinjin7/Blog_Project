@@ -157,10 +157,10 @@
     float: left;
 }
 #mail_check_input_box_false{
-    background-color:#ebebe4;
+	background-color:#ebebe4;
 }
 #mail_check_input_box_true{
-    background-color:white;
+	background-color:white;
 }
 .mail_check_input{
 	width:100%;
@@ -179,6 +179,12 @@
     font-weight: 900;
     background-color: #ececf7;
     cursor: pointer;
+}
+.correct{
+	color : green;
+}
+.incorrect{
+	color : red;
 }
 
 /* 주소 영역 */

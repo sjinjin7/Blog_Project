@@ -267,6 +267,27 @@
     color: white;
 }
 
+/* 유효성 검사 문구 */
+
+.final_id_ck{
+	display: none;
+}
+.final_pw_ck{
+	display: none;
+}
+.final_pwck_ck{
+	display: none;
+}
+.final_name_ck{
+	display: none;
+}
+.final_mail_ck{
+	display: none;
+}
+.final_addr_ck{
+	display: none;
+}
+
 /* float 속성 해제 */
 .clearfix{
 	clear: both;

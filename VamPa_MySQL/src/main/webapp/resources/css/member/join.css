@@ -288,6 +288,16 @@
 	display: none;
 }
 
+/* 비밀번호 확인 일치 유효성검사 */
+.pwck_input_re_1{
+		color : green;
+		display : none;	
+}
+.pwck_input_re_2{
+		color : red;
+		display : none;	
+}
+
 /* float 속성 해제 */
 .clearfix{
 	clear: both;

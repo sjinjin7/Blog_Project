@@ -41,6 +41,8 @@
 					<input class="pwck_input">
 				</div>
 				<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
+				<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
+				<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
 			</div>
 			<div class="user_wrap">
 				<div class="user_name">이름</div>
@@ -131,6 +133,24 @@ $(document).ready(function(){
 		}else{
 			$('.final_id_ck').css('display', 'none');
 			idCheck = true;
+		}
+		
+		/* 비밀번호 유효성 검사 */
+		if(pw == ""){
+			$('.final_pw_ck').css('display','block');
+			pwCheck = false;
+		}else{
+			$('.final_pw_ck').css('display', 'none');
+			pwCheck = true;
+		}
+		
+		/* 비밀번호 확인 유효성 검사 */
+		if(pwck == ""){
+			$('.final_pwck_ck').css('display','block');
+			pwckCheck = false;
+		}else{
+			$('.final_pwck_ck').css('display', 'none');
+			pwckCheck = true;
 		}
 		
 		//$("#join_form").attr("action", "/member/join");
@@ -260,6 +280,27 @@ function execution_daum_address(){
     }).open();   
     
 }
+
+/* 비밀번호 확인 일치 유효성 검사 */
+
+$('.pwck_input').on("propertychange change keyup paste input", function(){
+	
+	var pw = $('.pw_input').val();
+	var pwck = $('.pwck_input').val();
+	$('.final_pwck_ck').css('display', 'none');
+	
+	if(pw == pwck){
+		$('.pwck_input_re_1').css('display','block');
+		$('.pwck_input_re_2').css('display','none');
+		pwckcorCheck = true;
+	}else{
+		$('.pwck_input_re_1').css('display','none');
+		$('.pwck_input_re_2').css('display','block');
+		pwckcorCheck = false;
+	}
+	
+	
+});
 
 
 </script>

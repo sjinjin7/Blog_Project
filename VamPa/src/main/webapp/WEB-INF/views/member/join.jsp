@@ -72,7 +72,7 @@
 				<div class="address_name">주소</div>
 				<div class="address_input_1_wrap">
 					<div class="address_input_1_box">
-						<input class="address_input_1" name="memberAddr1" disabled="disabled">
+						<input class="address_input_1" name="memberAddr1" readonly="readonly">
 					</div>
 					<div class="address_button" onclick="execution_daum_address()">
 						<span>주소 찾기</span>
@@ -81,12 +81,12 @@
 				</div>
 				<div class ="address_input_2_wrap">
 					<div class="address_input_2_box">
-						<input class="address_input_2" name="memberAddr2" disabled="disabled">
+						<input class="address_input_2" name="memberAddr2" readonly="readonly">
 					</div>
 				</div>
 				<div class ="address_input_3_wrap">
 					<div class="address_input_3_box">
-						<input class="address_input_3" name="memberAddr3" disabled="disabled">
+						<input class="address_input_3" name="memberAddr3" readonly="readonly">
 					</div>
 				</div>
 				<span class="final_addr_ck">주소를 입력해주세요.</span>
@@ -111,7 +111,7 @@ var code = "";				//이메일전송 인증번호 저장위한 코드
  var pwckcorCheck = false;		// 비번 확인 일치 확인
  var nameCheck = false;			// 이름
  var mailCheck = false;			// 이메일
- var mainumCheck = false;		// 이메일 인증번호 확인
+ var mailnumCheck = false;		// 이메일 인증번호 확인
  var addressCheck = false 		// 주소
 
 $(document).ready(function(){
@@ -153,8 +153,43 @@ $(document).ready(function(){
 			pwckCheck = true;
 		}
 		
-		//$("#join_form").attr("action", "/member/join");
-		//$("#join_form").submit();
+		/* 이름 유효성 검사 */
+		if(name == ""){
+			$('.final_name_ck').css('display','block');
+			nameCheck = false;
+		}else{
+			$('.final_name_ck').css('display', 'none');
+			nameCheck = true;
+		}		
+		
+		/* 이메일 유효성 검사 */
+		if(mail == ""){
+			$('.final_mail_ck').css('display','block');
+			mailCheck = false;
+		}else{
+			$('.final_mail_ck').css('display', 'none');
+			mailCheck = true;
+		}		
+		
+		/* 주소 유효성 검사 */
+		if(addr == ""){
+			$('.final_addr_ck').css('display','block');
+			addressCheck = false;
+		}else{
+			$('.final_addr_ck').css('display', 'none');
+			addressCheck = true;
+		}		
+		
+		/* 최종 유효성 검사 */
+		if(idCheck&&idckCheck&&pwCheck&&pwckCheck&&pwckcorCheck&&nameCheck&&mailCheck&&mailnumCheck&&addressCheck ){
+
+			$("#join_form").attr("action", "/member/join");
+			$("#join_form").submit();			
+			
+		}		
+		
+		return false;
+
 	});
 });
 
@@ -219,9 +254,11 @@ $(".mail_check_input").blur(function(){
 	if(inputCode == code){							// 일치할 경우
 		checkResult.html("인증번호가 일치합니다.");
 		checkResult.attr("class", "correct");		
+		mailnumCheck = true;
 	} else {											// 일치하지 않을 경우
 		checkResult.html("인증번호를 다시 확인해주세요.");
 		checkResult.attr("class", "incorrect");
+		mailnumCheck = false;
 	}	
 	
 });
@@ -273,7 +310,7 @@ function execution_daum_address(){
             $(".address_input_2").val(addr);
             //$("[name=memberAddr2]").val(addr);			// 대체가능
             // 상세주소 입력란 disabled 속성 변경 및 커서를 상세주소 필드로 이동한다.
-            $(".address_input_3").attr("disabled",false);
+            $(".address_input_3").attr("readonly",false);
             $(".address_input_3").focus();
             
         }

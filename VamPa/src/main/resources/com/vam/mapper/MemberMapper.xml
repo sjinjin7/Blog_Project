@@ -21,7 +21,7 @@
   	<!-- 로그인 -->
   	<select id="memberLogin" resultType="com.vam.model.MemberVO">
   	
-  		select memberId, memberName, money, point from book_member where memberId = #{memberId} and memberPw = #{memberPw}
+  		select memberId, memberName, adminck, money, point from book_member where memberId = #{memberId} and memberPw = #{memberPw}
   	
   	</select>
   	

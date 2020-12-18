@@ -80,6 +80,22 @@
     height: 1000px;
 }
 
+/* 로그인 성공 영역 */
+.login_success_area{
+	height: 62%;
+    width: 80%;
+    border: 2px solid #7474ad;
+    border-radius: 15px;
+    margin: 5% auto;
+    padding-top: 5%;
+}
+.login_success_area>span{
+	display : block;
+	text-align: left;
+    margin-left: 10%;
+}
+
+
 /* float 속성 해제 */
 .clearfix{
 	clear: both;

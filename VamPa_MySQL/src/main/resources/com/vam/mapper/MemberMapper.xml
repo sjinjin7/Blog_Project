@@ -7,7 +7,7 @@
 	<!-- 회원가입 -->  
   	<insert id="memberJoin">
   	
-  		insert into book_member values(#{memberId}, #{memberPw}, #{memberName}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0, sysdate, 100000, 5000 )
+  		insert into book_member values(#{memberId}, #{memberPw}, #{memberName}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0, sysdate(), 100000, 5000 )
 
   	</insert>
   	

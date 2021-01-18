@@ -22,8 +22,8 @@ public class JDBCTests {
 		
 		try(Connection con =
 				DriverManager.getConnection(
-						"jdbc:oracle:thin:@localhost:1521:XE",
-						"c##vam",
+						"jdbc:oracle:thin:@localhost:1521:orcl",
+						"vam",
 						"1234")){
 			System.out.println(con);
 		}catch(Exception e) {

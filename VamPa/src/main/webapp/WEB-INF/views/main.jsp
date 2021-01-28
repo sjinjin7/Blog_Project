@@ -14,7 +14,33 @@
 <div class="wrapper">
 	<div class="wrap">
 		<div class="top_gnb_area">
-			<h1>gnb area</h1>
+			<ul class="list">
+				<c:if test = "${member == null}">	<!-- 로그인 x -->	
+					<li >
+						<a href="/member/login">로그인</a>
+					</li>
+					<li>
+						<a href="/member/join">회원가입</a>
+					</li>
+				</c:if>
+				<c:if test="${member != null }">	<!-- 로그인 o -->		
+					<c:if test="${member.adminCk == 1 }">	<!-- 관리자 계정 -->
+						<li><a href="/admin/main">관리자 페이지</a></li>
+					</c:if>							
+					<li>
+						로그아웃
+					</li>
+					<li>
+						마이룸
+					</li>
+					<li>
+						장바구니
+					</li>
+				</c:if>				
+				<li>
+					고객센터
+				</li>			
+			</ul>			
 		</div>
 		<div class="top_area">
 			<div class="logo_area">

@@ -3,6 +3,9 @@
 	margin: 0;
 	padding:0;
 }
+a{
+	text-decoration: none;
+}
 /* 화면 전체 렙 */
 .wrapper{
 	width: 100%;
@@ -16,7 +19,21 @@
 .top_gnb_area{
 	width: 100%;
     height: 50px;
-    background-color: #a2a2ea;
+    background-color: #f0f0f1;
+    position:relative;    
+}
+.top_gnb_area .list{
+	position: absolute;
+    top: 0px;
+    right: 0;
+    
+}
+.top_gnb_area .list li{
+	list-style: none;	
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
 }
 /* 로고, 검색, 로그인 */
 .top_area{

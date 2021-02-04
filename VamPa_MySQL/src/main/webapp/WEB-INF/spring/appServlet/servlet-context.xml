@@ -23,6 +23,16 @@
 	
 	<context:component-scan base-package="com.vam.controller" />
 	
-	
+	<!-- 인터셉터 적용 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/login.do"></mapping>
+			<beans:bean id="loginIntreceptor" class="com.vam.interceptor.LoginInterceptor"></beans:bean>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**"></mapping>
+			<beans:bean id="AdminIntreceptor" class="com.vam.interceptor.AdminInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>	
 	
 </beans:beans>

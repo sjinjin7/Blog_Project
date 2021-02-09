@@ -96,9 +96,7 @@ ul{
     width: 80%;
     float:left;
     height: 100%;
-    height: 700px;
-    
-}
+ }
 .admin_content_subject{			/* 관리자 컨텐츠 제목 영역 */
     font-size: 40px;
     font-weight: bolder;

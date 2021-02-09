@@ -91,9 +91,7 @@ ul{
 .admin_content_wrap{
     width: 80%;
     float:left;
-    height: 100%;
-    height: 700px;
-    
+    height: 100%;  
 }
 .admin_content_wrap div{
     margin-top: 280px;

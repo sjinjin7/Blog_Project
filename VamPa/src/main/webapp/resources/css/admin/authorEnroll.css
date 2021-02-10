@@ -44,7 +44,7 @@ ul{
     height:110px;
     line-height: 110px;
     background-color: #5080bd;
-    margin-bottom:15px;
+    margin-bottom: 15px;
 }
 .admin_top_wrap>span{
     margin-left: 30px;
@@ -85,7 +85,7 @@ ul{
 .admin_navi_wrap li a:visited {color: black;}
 .admin_navi_wrap li a:active {color: black;}
 .admin_navi_wrap li a:hover {color: black;}
-
+ 
 .admin_list_03{
     background-color: #c8c8c8;
 } 
@@ -96,8 +96,11 @@ ul{
     width: 80%;
     float:left;
     height: 100%;
- }
-.admin_content_subject{			/* 관리자 컨텐츠 제목 영역 */
+
+    
+}
+/* 관리자 컨텐츠 제목 영역 */
+.admin_content_subject{	
     font-size: 40px;
     font-weight: bolder;
     padding-left: 15px;
@@ -105,6 +108,65 @@ ul{
     height: 80px;
     line-height: 80px;
     color: white;	
+}
+/* 관리자 컨텐츠 메인 영역 */
+.form_section{
+	width: 95%;
+    margin-left: 2%;
+    margin-top: 20px;
+    border: 1px solid #dbdde2;
+    background-color: #efefef;	
+}
+.form_section_title{
+	padding: 20px 35px;	
+}
+.form_section_title label{
+	display: block;
+    font-size: 20px;
+    font-weight: 800;
+}
+.form_section_content{
+	padding: 20px 35px;
+    border-top: 1px solid #dbdde2;	
+}
+.form_section_content input{
+	width: 98%;
+    height: 25px;
+    font-size: 20px;
+    padding: 5px 1%;
+}
+.form_section_content select{
+	width: 98%;
+    height: 35px;
+    font-size: 20px;
+    text-align-last: center;
+}
+
+/* 입력란 공란 경고 태그 */
+.form_section_content span{	
+	display: none;
+    padding-top: 10px;
+    text-align: center;
+    color: #e05757;
+    font-weight: 300;    
+}
+
+
+/* 버튼 영역 */
+.btn_section{
+	text-align: center;
+	margin: 80px 0;
+}
+.btn{
+    min-width: 180px;
+    padding: 4px 30px;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.enroll_btn{
+	background-color: #dbdde2;
+	margin-left:15px;
 }
 
 /* footer navai 영역 */
@@ -167,7 +229,6 @@ ul{
 	margin-left: 70px;
 	margin-top : 30px;
 }
-
 
 
 

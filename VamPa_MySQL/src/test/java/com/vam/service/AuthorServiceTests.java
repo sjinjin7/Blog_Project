@@ -8,18 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.vam.model.AuthorVO;
 import com.vam.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class AuthorServiceTests {
-	
+
 	/*AuthoreService 의존성 주입*/
 	@Autowired
 	private AuthorService service;
 	
-	/* 작가 등록 테스트 */
-	/*
 	@Test
 	public void authorEnrollTest() throws Exception {
 
@@ -31,9 +30,8 @@ public class AuthorServiceTests {
 		
 		service.authorEnroll(author);
 		
-	}
-	*/
-	
+	}	
+
 	/* 작가 목록 구현 */
 	@Test
 	public void authorGetListTest() throws Exception{
@@ -46,6 +44,6 @@ public class AuthorServiceTests {
 			System.out.println("list" + i + "......." + list.get(i));
 		}
 		
-	}
-
+	}	
+	
 }

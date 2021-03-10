@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,28 @@
 				
                 <div class="admin_content_wrap">
                     <div class="admin_content_subject"><span>작가 관리</span></div>
+					<div class="author_table_wrap">
+                    	<table class="author_table">
+                    		<thead>
+                    			<tr>
+                    				<td class="th_column_1">작가 번호</td>
+                    				<td class="th_column_2">작가 이름</td>
+                    				<td class="th_column_3">작가 국가</td>
+                    				<td class="th_column_4">등록 날짜</td>
+                    				<td class="th_column_5">수정 날짜</td>
+                    			</tr>
+                    		</thead>
+                    		<c:forEach items="${list}" var="list">
+                    		<tr>
+                    			<td><c:out value="${list.authorId}"></c:out> </td>
+                    			<td><c:out value="${list.authorName}"></c:out></td>
+                    			<td><c:out value="${list.nationName}"></c:out> </td>
+                    			<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd"/></td>
+                    			<td><fmt:formatDate value="${list.updateDate}" pattern="yyyy-MM-dd"/></td>
+                    		</tr>
+                    		</c:forEach>
+                    	</table>                			
+                    </div>                    
                 </div>
  
  				<%@include file="../includes/admin/footer.jsp" %>

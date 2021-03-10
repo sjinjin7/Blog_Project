@@ -11,4 +11,18 @@
 
   	</insert>	
   	
+  	
+	<!-- 작가 목록 -->
+	<select id="authorGetList" resultType="com.vam.model.AuthorVO">
+	
+		select  authorid, authorname, nationid, regdate, updatedate
+		from vam_author 
+		<if test="keyword != null">
+			where authorname like concat('%',#{keyword}, '%')
+		</if>
+		order by authorid desc 
+		limit #{skip}, #{amount}	
+	
+	</select>
+  	
   </mapper>

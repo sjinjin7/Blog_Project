@@ -1,10 +1,16 @@
 package com.vam.mapper;
 
+import java.util.List;
+
 import com.vam.model.AuthorVO;
+import com.vam.model.Criteria;
 
 public interface AuthorMapper {
 
 	/* 작가 등록 */
 	public void authorEnroll(AuthorVO author);	
+	
+	/* 작가 목록 */
+	public List<AuthorVO> authorGetList(Criteria cri);
 	
 }

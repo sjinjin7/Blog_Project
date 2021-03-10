@@ -95,9 +95,7 @@ ul{
 .admin_content_wrap{
     width: 80%;
     float:left;
-    height: 100%;
-
-    
+    min-height:700px;  
 }
 /* 관리자 컨텐츠 제목 영역 */
 .admin_content_subject{	

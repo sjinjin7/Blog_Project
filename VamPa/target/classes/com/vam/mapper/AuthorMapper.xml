@@ -35,4 +35,17 @@
   	
   	</select>
   	
+  	<!-- 작가 수 -->
+  	<select id="authorGetTotal" resultType="int">
+  	
+  		select count(*) from vam_author
+  		
+  		<if test="keyword != null">
+  		
+  			where authorname like '%' || #{keyword} || '%'
+  		
+  		</if>
+  		
+  	</select>  	
+  	
   </mapper>

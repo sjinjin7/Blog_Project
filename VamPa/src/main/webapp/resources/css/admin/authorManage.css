@@ -140,6 +140,39 @@ ul{
 
 
 
+
+	/* 검색 영역 */
+.search_wrap{
+	margin-top:15px;
+}
+.search_input{
+    position: relative;
+    text-align:center;	
+}
+.search_input input[name='keyword']{
+	padding: 4px 10px;
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+}
+.search_btn{
+	height: 32px;
+    width: 80px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    position: absolute;
+    margin-left: 15px;
+    background-color: #c3daf7;
+}
+
+.table_empty{
+	height: 50px;
+    text-align: center;
+    margin: 200px 0 215px 0px;
+    font-size: 25px;
+}
+
 	/* 페이지 버튼 인터페이스 */
 .pageMaker_wrap{
 	text-align: center;

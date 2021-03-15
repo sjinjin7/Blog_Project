@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -82,6 +83,20 @@ public class AdminController {
 		rttr.addFlashAttribute("enroll_result", author.getAuthorName());	// 등록 성공 메시지(작가이름)
 		
 		return "redirect:/admin/authorManage";
+		
+	}
+	
+	/* 작가 상세 페이지 */
+	@GetMapping("/authorDetail")
+	public void authorGetInfoGET(int authorId, Criteria cri, Model model) throws Exception {
+		
+		logger.info("authorDetail......." + authorId);
+		
+		/* 작가 관리 페이지 정보 */
+		model.addAttribute("cri", cri);
+		
+		/* 선택 작가 정보 */
+		model.addAttribute("authorInfo", authorService.authorGetDetail(authorId));
 		
 	}
 		

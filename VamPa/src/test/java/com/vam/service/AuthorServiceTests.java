@@ -35,7 +35,8 @@ public class AuthorServiceTests {
 	*/
 	
 	/* 작가 목록 구현 */
-	@Test
+	/*
+	@Test	
 	public void authorGetListTest() throws Exception{
 		
 		Criteria cri = new Criteria(3, 10);
@@ -46,6 +47,17 @@ public class AuthorServiceTests {
 			System.out.println("list" + i + "......." + list.get(i));
 		}
 		
+	}
+	*/
+	
+	/*작가 상세 페이지*/
+	@Test
+	public void authorGetDetailTest() throws Exception{
+		
+		int authorId = 20;
+		
+		System.out.println("author......" + service.authorGetDetail(authorId));
+				
 	}
 
 }

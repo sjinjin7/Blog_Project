@@ -17,7 +17,7 @@
   	
   	<![CDATA[
 	  	select * from (
-	  		select /*+INDEX_DESC(vam_author SYS_C007515) */ 
+	  		select /*+INDEX_DESC(vam_author SYS_C007451) */ 
 	  			rownum as rn, authorid, authorname, nationid, regdate, updatedate
 			from vam_author 
 			where
@@ -46,6 +46,13 @@
   		
   		</if>
   		
-  	</select>  	
+  	</select> 
+  	
+   	<!-- 작가 디테일 페이지 -->
+  	<select id="authorGetDetail" resultType="com.vam.model.AuthorVO">
+  	
+  		select * from vam_author where authorid = #{authorId}
+  	
+  	</select>  	 	 	
   	
   </mapper>

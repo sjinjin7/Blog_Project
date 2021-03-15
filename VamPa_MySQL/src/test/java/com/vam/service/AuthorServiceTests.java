@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.vam.model.AuthorVO;
 import com.vam.model.Criteria;
 
+import jdk.internal.org.jline.utils.Log;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class AuthorServiceTests {
@@ -18,7 +20,7 @@ public class AuthorServiceTests {
 	/*AuthoreService 의존성 주입*/
 	@Autowired
 	private AuthorService service;
-	
+	/*
 	@Test
 	public void authorEnrollTest() throws Exception {
 
@@ -30,10 +32,12 @@ public class AuthorServiceTests {
 		
 		service.authorEnroll(author);
 		
-	}	
+	}
+	*/	
 
 	/* 작가 목록 구현 */
-	@Test
+	/*
+	@Test	
 	public void authorGetListTest() throws Exception{
 		
 		Criteria cri = new Criteria(3, 10);
@@ -44,6 +48,18 @@ public class AuthorServiceTests {
 			System.out.println("list" + i + "......." + list.get(i));
 		}
 		
-	}	
+	}
+	*/
+	
+	/*작가 상세 페이지*/
+	@Test
+	public void authorGetDetailTest() throws Exception{
+		
+		int authorId = 20;
+		
+		Log.info("author......" + service.authorGetDetail(authorId));
+		
+	}
+	
 	
 }

@@ -19,4 +19,7 @@ public interface AuthorMapper {
 	/* 작가 상세 */
 	public AuthorVO authorGetDetail(int authorId);
 	
+	/* 작가 정보 수정 */
+	public int authorModify(AuthorVO author);
+	
 }

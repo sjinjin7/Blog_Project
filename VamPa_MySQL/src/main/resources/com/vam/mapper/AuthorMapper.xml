@@ -45,5 +45,12 @@
   	
   	</select>  	
   	
+	<!-- 작가 내용 수정 -->
+	<update id="authorModify">
+	
+		update vam_author set authorName=#{authorName}, nationId=#{nationId}, authorIntro=#{authorIntro}, updatedate=now() where authorId = #{authorId}
+	
+	</update>  	
+  	
   	
   </mapper>

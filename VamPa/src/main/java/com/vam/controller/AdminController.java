@@ -133,5 +133,12 @@ public class AdminController {
 		return "redirect:/admin/goodsManage";
 	}	
 	
+	/* 작가 검색 팝업창 */
+	@GetMapping("/authorPop")
+	public void authorPopGET() throws Exception{
+		
+		logger.info("authorPopGET.......");
+	
+	}	
 	
 }

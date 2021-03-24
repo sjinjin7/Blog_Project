@@ -37,7 +37,9 @@
                     				<label>작가</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="authorId" value="0">
+                    				<input id="authorName_input" readonly="readonly">
+                    				<input id="authorId_input" name="authorId" type="hidden">
+                    				<button class="authorId_btn">작가 선택</button>
                     			</div>
                     		</div>            
                     		<div class="form_section">
@@ -173,6 +175,18 @@ $("#enrollBtn").on("click",function(e){
 	/* 캘린더 */
 	$(function() {
 	  $( "input[name='publeYear']" ).datepicker(config);
+	});
+	
+/* 작가 선택 버튼 */
+	$('.authorId_btn').on("click",function(e){
+		
+		e.preventDefault();
+		
+		let popUrl = "/admin/authorPop";
+		let popOption = "width = 650px, height=550px, top=300px, left=300px, scrollbars=yes";
+		
+		window.open(popUrl,"작가 찾기",popOption);	
+		
 	});
 	
 	

@@ -133,13 +133,29 @@ public class AdminController {
 		return "redirect:/admin/goodsManage";
 	}	
 
+	
 	/* 작가 검색 팝업창 */
 	@GetMapping("/authorPop")
-	public void authorPopGET() throws Exception{
+	public void authorPopGET(Criteria cri, Model model) throws Exception{
 		
 		logger.info("authorPopGET.......");
-	
-	}		
+		
+		cri.setAmount(5);
+		
+		/* 게시물 출력 데이터 */
+		List list = authorService.authorGetList(cri);
+		
+		if(!list.isEmpty()) {
+			model.addAttribute("list",list);	// 작가 존재 경우
+		} else {
+			model.addAttribute("listCheck", "empty");	// 작가 존재하지 않을 경우
+		}
+		
+		
+		/* 페이지 이동 인터페이스 데이터 */
+		model.addAttribute("pageMaker", new PageDTO(cri, authorService.authorGetTotal(cri)));		
+	}	
+		
 	
 	
 }

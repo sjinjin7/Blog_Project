@@ -12,4 +12,11 @@
 
   	</insert>
 
+  	<!-- 카테고리 리스트 -->
+  	<select id="cateList" resultType="com.vam.model.CateVO">
+  	
+  		select * from vam_bcate order by catecode
+  	
+  	</select>
+
   </mapper>

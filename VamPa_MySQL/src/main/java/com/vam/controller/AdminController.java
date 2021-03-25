@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vam.model.AuthorVO;
 import com.vam.model.BookVO;
 import com.vam.model.Criteria;
@@ -48,8 +49,21 @@ public class AdminController {
 	
 	/* 상품 등록 페이지 접속 */
 	@RequestMapping(value = "goodsEnroll", method = RequestMethod.GET)
-	public void goodsEnrollGET() throws Exception{
+	public void goodsEnrollGET(Model model) throws Exception{
+		
 		logger.info("상품 등록 페이지 접속");
+		
+		ObjectMapper objm = new ObjectMapper();
+		
+		List list = adminService.cateList();
+		
+		String cateList = objm.writeValueAsString(list);
+		
+		model.addAttribute("cateList", cateList);
+		
+		//logger.info("변경 전.........." + list);
+		//logger.info("변경 gn.........." + cateList);
+		
 	}
 	
 	/* 작가 등록 페이지 접속 */

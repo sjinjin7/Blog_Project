@@ -172,6 +172,20 @@ input[name='publeYear'] {
     text-align: center;
 }
 
+.form_section_content select {		/* 카테고리 css 설정 */
+    width: 92%;
+    height: 35px;
+    font-size: 20px;
+    text-align-last: center;
+    margin-left: 5px;
+}
+.cate_wrap span {
+    font-weight: 600;
+}
+.cate_wrap:not(:first-child) {
+    margin-top: 20px;
+}
+
 
 /* 버튼 영역 */
 .btn_section{

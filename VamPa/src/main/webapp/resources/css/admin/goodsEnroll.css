@@ -194,6 +194,12 @@ input[name='publeYear'] {
     font-weight: 300;    
 }
 
+.step_val{						/* 할인 가격 문구 */
+	display: block;
+    padding-top: 5px;
+    font-weight: 500;
+}
+
 
 /* 버튼 영역 */
 .btn_section{

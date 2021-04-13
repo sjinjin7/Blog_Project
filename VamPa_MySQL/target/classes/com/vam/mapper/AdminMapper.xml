@@ -18,5 +18,35 @@
   		select * from vam_bcate order by catecode
   	
   	</select>
+  	
+	<!-- 상품 리스트 -->
+	<select id="goodsGetList" resultType="com.vam.model.BookVO">
+	
+		select  bookId, bookName,  b.authorName, c.cateName, bookStock, a.regDate
+		from vam_book a 
+		left outer join vam_author b on a.authorId = b.authorId
+		left outer join vam_bcate c on a.cateCode = c.cateCode
+		<if test="keyword != null">
+			where (bookName like concat ('%', #{keyword}, '%'))
+		</if>
+		order by bookId desc 
+		limit #{skip}, #{amount}		
+	
+	</select>
+  	
+  	<!-- 상품 총 갯수 -->
+  	<select id="goodsGetTotal" resultType="int">
+  	
+  		select count(*) from vam_book
+  		
+  		<if test="keyword != null">
+  		
+  			where bookName like concat('%' , #{keyword}, '%')
+  		
+  		</if>
+  	
+  	</select>
+  	
+  	
 
   </mapper>

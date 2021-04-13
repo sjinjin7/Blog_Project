@@ -1,13 +1,15 @@
 package com.vam.mapper;
 
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vam.model.BookVO;
+import com.vam.model.Criteria;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -40,11 +42,37 @@ public class AdminMapperTests {
 	*/
 	
 	/* 카테고리 리스트 */
+	/*
 	@Test
 	public void cateListTest() throws Exception{
 		
 		System.out.println("cateList()..........." + mapper.cateList());
 		
 	}
+	*/
+	
+	/* 상품 리스트 & 상품 총 개수*/
+	/**/
+	@Test
+	public void goodsGetListTests() {
+		
+		Criteria cri = new Criteria();
+		
+		cri.setKeyword("test");
+		
+		/* 상품 리스트 */
+		List list = mapper.goodsGetList(cri);
+		for(int i = 0; i < 10; i++) {
+			System.out.println("result..........." +i + " : " + list.get(i) );
+		}
+		
+		
+		
+		/* 상품 총 개수 */
+		//int result = mapper.goodsGetTotal(cri);
+		//System.out.println("resout........." + result);
+		
+	}
+	
 	
 }

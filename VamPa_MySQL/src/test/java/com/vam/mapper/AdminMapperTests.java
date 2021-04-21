@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.vam.model.BookVO;
 import com.vam.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -50,24 +51,39 @@ public class AdminMapperTests {
 	*/
 	
 	
-	/* 상품 리스트 & 상품 총 갯수 */
+	/* 상품 리스트 & 상품 총 개수*/
+	/*
 	@Test
-	public void goodsGetListTest() {
+	public void goodsGetListTests() {
 		
 		Criteria cri = new Criteria();
 		
-		/* 검색조건 */
-		//cri.setKeyword("테스트");
+		cri.setKeyword("test");
 		
-		/* 검색 리스트 */
-		/*List list = mapper.goodsGetList(cri);
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println("result......." + i + " : " + list.get(i));
-		}*/
+		// 상품 리스트 
+		List list = mapper.goodsGetList(cri);
+		for(int i = 0; i < 10; i++) {
+			System.out.println("result..........." +i + " : " + list.get(i) );
+		}
 		
-		/* 상품 총 갯수 */
-		int result = mapper.goodsGetTotal(cri);
-		System.out.println("resutl.........." + result);
+		
+		
+		/// 상품 총 개수 
+		//int result = mapper.goodsGetTotal(cri);
+		//System.out.println("resout........." + result);
+		
+	}
+	*/
+	
+	/* 상품 조회 페이지 */
+	@Test
+	public void goodsGetDetailTest() {
+		
+		int bookId = 150;
+		
+		BookVO result = mapper.goodsGetDetail(bookId);
+		
+		System.out.println("상품 조회 데이터 : " + result);
 		
 		
 	}

@@ -1,15 +1,13 @@
 package com.vam.mapper;
 
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vam.model.Criteria;
+import com.vam.model.BookVO;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -52,7 +50,7 @@ public class AdminMapperTests {
 	*/
 	
 	/* 상품 리스트 & 상품 총 개수*/
-	/**/
+	/*
 	@Test
 	public void goodsGetListTests() {
 		
@@ -60,7 +58,7 @@ public class AdminMapperTests {
 		
 		cri.setKeyword("test");
 		
-		/* 상품 리스트 */
+		// 상품 리스트 
 		List list = mapper.goodsGetList(cri);
 		for(int i = 0; i < 10; i++) {
 			System.out.println("result..........." +i + " : " + list.get(i) );
@@ -68,9 +66,23 @@ public class AdminMapperTests {
 		
 		
 		
-		/* 상품 총 개수 */
+		/// 상품 총 개수 
 		//int result = mapper.goodsGetTotal(cri);
 		//System.out.println("resout........." + result);
+		
+	}
+	*/
+	
+	/* 상품 조회 페이지 */
+	@Test
+	public void goodsGetDetailTest() {
+		
+		int bookId = 150;
+		
+		BookVO result = mapper.goodsGetDetail(bookId);
+		
+		System.out.println("상품 조회 데이터 : " + result);
+		
 		
 	}
 	

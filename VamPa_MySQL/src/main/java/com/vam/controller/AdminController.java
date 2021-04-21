@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vam.model.AuthorVO;
 import com.vam.model.BookVO;
@@ -80,6 +81,25 @@ public class AdminController {
 		//logger.info("변경 gn.........." + cateList);
 		
 	}
+	
+	/* 상품 조회 페이지 */
+	@GetMapping("/goodsDetail")
+	public void goodsGetInfoGET(int bookId, Criteria cri, Model model) throws JsonProcessingException {
+		
+		logger.info("goodsGetInfo()........." + bookId);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		/* 카테고리 리스트 데이터 */
+		model.addAttribute("cateList", mapper.writeValueAsString(adminService.cateList()));		
+		
+		/* 목록 페이지 조건 정보 */
+		model.addAttribute("cri", cri);
+		
+		/* 조회 페이지 정보 */
+		model.addAttribute("goodsInfo", adminService.goodsGetDetail(bookId));
+		
+	}	
 	
 	/* 작가 등록 페이지 접속 */
 	@RequestMapping(value = "authorEnroll", method = RequestMethod.GET)

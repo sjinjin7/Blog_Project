@@ -161,14 +161,6 @@
 			$("#discount_interface").attr("value", bookDiscount);
 			
 			
-			/* 출판일 값 가공 */
-			let publeYear = '${goodsInfo.publeYear}';
-			let length = publeYear.indexOf(" ");
-			
-			publeYear = publeYear.substring(0, length);
-			
-			$("input[name='publeYear']").attr("value", publeYear);
-			
 			/* 책 소개 */
 			ClassicEditor
 				.create(document.querySelector('#bookIntro_textarea'))

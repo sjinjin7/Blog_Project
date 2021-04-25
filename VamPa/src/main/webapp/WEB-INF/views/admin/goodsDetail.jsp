@@ -138,15 +138,15 @@
                    		
                    			<div class="btn_section">
                    				<button id="cancelBtn" class="btn">상품 목록</button>
-	                    		<button id="enrollBtn" class="btn enroll_btn">수정 </button>
-	                    	</div> 
+	                    		<button id="modifyBtn" class="btn enroll_btn">수정 </button>
+	                    	</div>  
                     </div>      
 
                 	
                 	<form id="moveForm" action="/admin/goodsManage" method="get" >
- 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+ 						<input type="hidden" name="pageNum" value="${cri.pageNum}">
+						<input type="hidden" name="amount" value="${cri.amount}">
+						<input type="hidden" name="keyword" value="${cri.keyword}">
                 	</form>
                 	
                 </div>
@@ -160,14 +160,6 @@
 			let bookDiscount = '<c:out value="${goodsInfo.bookDiscount}"/>' * 100;
 			$("#discount_interface").attr("value", bookDiscount);
 			
-			
-			/* 출판일 값 가공 */
-			let publeYear = '${goodsInfo.publeYear}';
-			let length = publeYear.indexOf(" ");
-			
-			publeYear = publeYear.substring(0, length);
-			
-			$("input[name='publeYear']").attr("value", publeYear);
 			
 			/* 책 소개 */
 			ClassicEditor
@@ -283,6 +275,21 @@
 			
 		}); // $(document).ready
 	
+		/* 목록 이동 버튼 */
+		$("#cancelBtn").on("click", function(e){
+			e.preventDefault();
+			$("#moveForm").submit();	
+		});	
+		
+		/* 수정 페이지 이동 */
+		$("#modifyBtn").on("click", function(e){
+			e.preventDefault();
+			let addInput = '<input type="hidden" name="bookId" value="${goodsInfo.bookId}">';
+			$("#moveForm").append(addInput);
+			$("#moveForm").attr("action", "/admin/goodsModify");
+			$("#moveForm").submit();
+		});			
+		
 	</script>
 
 </body>

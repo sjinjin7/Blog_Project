@@ -421,7 +421,133 @@
 		}
 		
 		
-	});		
+	});	
+	
+	/* 취소 버튼 */
+	$("#cancelBtn").on("click", function(e){
+		e.preventDefault();
+		$("#moveForm").submit();
+	});
+	
+	/* 수정 버튼 */
+	$("#modifyBtn").on("click",function(e){
+		
+		e.preventDefault();
+		
+		/* 체크 변수 */
+		let bookNameCk = false;
+		let authorIdCk = false;
+		let publeYearCk = false;
+		let publisherCk = false;
+		let cateCodeCk = false;
+		let priceCk = false;
+		let stockCk = false;
+		let discountCk = false;
+		let introCk = false;
+		let contentsCk = false;	
+		
+		/* 체크 대상 변수 */
+		let bookName = $("input[name='bookName']").val();
+		let authorId = $("input[name='authorId']").val();
+		let publeYear = $("input[name='publeYear']").val();
+		let publisher = $("input[name='publisher']").val();
+		let cateCode = $("select[name='cateCode']").val();
+		let bookPrice = $("input[name='bookPrice']").val();
+		let bookStock = $("input[name='bookStock']").val();
+		let bookDiscount = $("#discount_interface").val();
+		let bookIntro = $(".bit p").html();
+		let bookContents = $(".bct p").html();	
+		
+		/* 공란 체크 */
+		if(bookName){
+			$(".bookName_warn").css('display','none');
+			bookNameCk = true;
+		} else {
+			$(".bookName_warn").css('display','block');
+			bookNameCk = false;
+		}
+		
+		if(authorId){
+			$(".authorId_warn").css('display','none');
+			authorIdCk = true;
+		} else {
+			$(".authorId_warn").css('display','block');
+			authorIdCk = false;
+		}
+		
+		if(publeYear){
+			$(".publeYear_warn").css('display','none');
+			publeYearCk = true;
+		} else {
+			$(".publeYear_warn").css('display','block');
+			publeYearCk = false;
+		}	
+		
+		if(publisher){
+			$(".publisher_warn").css('display','none');
+			publisherCk = true;
+		} else {
+			$(".publisher_warn").css('display','block');
+			publisherCk = false;
+		}
+		
+		if(cateCode != 'none'){
+			$(".cateCode_warn").css('display','none');
+			cateCodeCk = true;
+		} else {
+			$(".cateCode_warn").css('display','block');
+			cateCodeCk = false;
+		}	
+		
+		if(bookPrice != 0){
+			$(".bookPrice_warn").css('display','none');
+			priceCk = true;
+		} else {
+			$(".bookPrice_warn").css('display','block');
+			priceCk = false;
+		}	
+		
+		if(bookStock != 0){
+			$(".bookStock_warn").css('display','none');
+			stockCk = true;
+		} else {
+			$(".bookStock_warn").css('display','block');
+			stockCk = false;
+		}		
+		
+		if(!isNaN(bookDiscount)){
+			$(".bookDiscount_warn").css('display','none');
+			discountCk = true;
+		} else {
+			$(".bookDiscount_warn").css('display','block');
+			discountCk = false;
+		}	
+		
+		if(bookIntro != '<br data-cke-filler="true">'){
+			$(".bookIntro_warn").css('display','none');
+			introCk = true;
+		} else {
+			$(".bookIntro_warn").css('display','block');
+			introCk = false;
+		}	
+		
+		if(bookContents != '<br data-cke-filler="true">'){
+			$(".bookContents_warn").css('display','none');
+			contentsCk = true;
+		} else {
+			$(".bookContents_warn").css('display','block');
+			contentsCk = false;
+		}		
+		
+		/* 최종 확인 */
+		if(bookNameCk && authorIdCk && publeYearCk && publisherCk && cateCodeCk && priceCk && stockCk && discountCk && introCk && contentsCk ){
+			//alert('통과');
+			$("#modifyForm").submit();
+		} else {
+			return false;
+		}
+		
+	});	
 	
 	</script>	
  				

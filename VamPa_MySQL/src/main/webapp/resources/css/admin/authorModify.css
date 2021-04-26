@@ -176,7 +176,12 @@ ul{
 	background-color: #b8d3e8;
 	margin-left:15px;
 }
-
+.delete_btn{
+	background-color: #efcdcd;
+}
+.delete_btn:hover{
+	background-color : #e4a7a7;
+}
 
 
 

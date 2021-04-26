@@ -197,6 +197,35 @@ public class AdminController {
 		return "redirect:/admin/authorManage";
 		
 	}
+	
+	/* 작가 정보 삭제 */
+	@PostMapping("/authorDelete")
+	public String authorDeletePOST(int authorId, RedirectAttributes rttr) {
+		
+		logger.info("authorDeletePOST..........");
+		
+		int result = 0;
+		
+		try {
+			
+			result = authorService.authorDelete(authorId);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			result = 2;
+			rttr.addFlashAttribute("delete_result", result);
+			
+			return "redirect:/admin/authorManage";
+			
+		}
+		
+		
+		rttr.addFlashAttribute("delete_result", result);
+		
+		return "redirect:/admin/authorManage";
+		
+	}		
 
 	/* 상품 등록 */
 	@PostMapping("/goodsEnroll")

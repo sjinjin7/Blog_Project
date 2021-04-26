@@ -64,5 +64,12 @@
 		where bookId = ${bookId}
 		
 	</update>
+	
+	<!-- 상품 정보 삭제 -->
+	<delete id="goodsDelete">
+	
+		delete from vam_book where bookId = #{bookId}
+	
+	</delete>	
 
   </mapper>

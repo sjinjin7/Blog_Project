@@ -186,6 +186,12 @@ input[name='publeYear'] {
 #enrollBtn:hover {
     background-color: #c9cbd0;
 }
+.delete_btn{
+	background-color: #efcdcd;
+}
+.delete_btn:hover{
+	background-color : #e4a7a7;
+}
 
 .form_section_content select {		/* 카테고리 css 설정 */
     width: 92%;

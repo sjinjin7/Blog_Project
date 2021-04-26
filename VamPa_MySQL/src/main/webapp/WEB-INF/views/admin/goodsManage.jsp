@@ -130,6 +130,13 @@ $(document).ready(function(){
 	if(modify_result == 1){
 		alert("수정 완료");
 	}	
+	
+	/* 삭제 결과 경고창 */
+	let delete_result = '${delete_result}';
+	
+	if(delete_result == 1){
+		alert("삭제 완료");
+	}	
 
 });
 

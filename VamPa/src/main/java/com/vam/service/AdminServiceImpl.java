@@ -74,4 +74,13 @@ public class AdminServiceImpl implements AdminService {
 		
 	}	
 	
+	/* 상품 정보 삭제 */
+	@Override
+	public int goodsDelete(int bookId) {
+
+		log.info("goodsDelete..........");
+		
+		return adminMapper.goodsDelete(bookId);
+	}		
+	
 }

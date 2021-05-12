@@ -1,11 +1,15 @@
 package com.vam.controller;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -306,9 +310,25 @@ public class AdminController {
 			
 			/* 파일 저장 */
 			try {
+				
 				multipartFile.transferTo(saveFile);
+				
+				/* 썸네일 생성(ImageIO) */
+				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+				
+				BufferedImage bo_image = ImageIO.read(saveFile);
+				BufferedImage bt_image = new BufferedImage(300, 500, BufferedImage.TYPE_3BYTE_BGR);
+								
+				Graphics2D graphic = bt_image.createGraphics();
+				
+				graphic.drawImage(bo_image, 0, 0,300,500, null);
+					
+				ImageIO.write(bt_image, "jpg", thumbnailFile);				
+				
 			} catch (Exception e) {
+				
 				e.printStackTrace();
+				
 			} 
 			
 			

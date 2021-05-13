@@ -1,9 +1,7 @@
 package com.vam.controller;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +29,8 @@ import com.vam.model.Criteria;
 import com.vam.model.PageDTO;
 import com.vam.service.AdminService;
 import com.vam.service.AuthorService;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 @RequestMapping("/admin")
@@ -314,16 +314,42 @@ public class AdminController {
 				multipartFile.transferTo(saveFile);
 				
 				/* 썸네일 생성(ImageIO) */
-				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+				/*
+				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName); 
 				
 				BufferedImage bo_image = ImageIO.read(saveFile);
-				BufferedImage bt_image = new BufferedImage(300, 500, BufferedImage.TYPE_3BYTE_BGR);
+
+					//비율 
+					double ratio = 3;
+					//넓이 높이
+					int width = (int) (bo_image.getWidth() / ratio);
+					int height = (int) (bo_image.getHeight() / ratio);				
+				
+				BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 								
 				Graphics2D graphic = bt_image.createGraphics();
 				
-				graphic.drawImage(bo_image, 0, 0,300,500, null);
+				graphic.drawImage(bo_image, 0, 0,width,height, null);
 					
 				ImageIO.write(bt_image, "jpg", thumbnailFile);				
+				*/
+				
+				/* 방법 2 */
+				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);	
+				
+					BufferedImage bo_image = ImageIO.read(saveFile);
+
+					//비율 
+					double ratio = 3;
+					//넓이 높이
+					int width = (int) (bo_image.getWidth() / ratio);
+					int height = (int) (bo_image.getHeight() / ratio);					
+				
+				
+				Thumbnails.of(saveFile)
+		        .size(width, height)
+		        .toFile(thumbnailFile);
+					
 				
 			} catch (Exception e) {
 				

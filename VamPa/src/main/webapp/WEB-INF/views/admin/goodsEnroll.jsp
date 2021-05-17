@@ -501,7 +501,10 @@ $("#enrollBtn").on("click",function(e){
 	    	contentType : false,
 	    	data : formData,
 	    	type : 'POST',
-	    	dataType : 'json'
+	    	dataType : 'json',
+	    	success : function(result){
+	    		console.log(result);
+	    	}
 		});		
 
 		

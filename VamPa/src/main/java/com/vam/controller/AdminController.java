@@ -3,6 +3,7 @@ package com.vam.controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -12,6 +13,9 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vam.model.AttachImageVO;
 import com.vam.model.AuthorVO;
 import com.vam.model.BookVO;
 import com.vam.model.Criteria;
@@ -272,8 +277,8 @@ public class AdminController {
 	}	
 	
 	/* 첨부 파일 업로드 */
-	@PostMapping("/uploadAjaxAction")
-	public void uploadAjaxActionPOST(MultipartFile[] uploadFile) {
+	@PostMapping(value="/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
 		
 		logger.info("uploadAjaxActionPOST..........");
 		String uploadFolder = "C:\\upload";
@@ -294,14 +299,23 @@ public class AdminController {
 			uploadPath.mkdirs();
 		}
 		
+		/* 이미저 정보 담는 객체 */
+		List<AttachImageVO> list = new ArrayList();
+		
 		// 향상된 for
 		for(MultipartFile multipartFile : uploadFile) {
 			
+			/* 이미지 정보 객체 */
+			AttachImageVO vo = new AttachImageVO();
+			
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
+			vo.setFileName(uploadFileName);
+			vo.setUploadPath(datePath);
 			
 			/* uuid 적용 파일 이름 */
 			String uuid = UUID.randomUUID().toString();
+			vo.setUuid(uuid);
 			
 			uploadFileName = uuid + "_" + uploadFileName;
 			
@@ -357,10 +371,13 @@ public class AdminController {
 				
 			} 
 			
-			
+			list.add(vo);
 			
 		} //for
 
+		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
+		
+		return result;
 	}
 	
 }

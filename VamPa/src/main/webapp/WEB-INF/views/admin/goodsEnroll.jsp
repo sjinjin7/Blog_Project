@@ -463,7 +463,7 @@ $("#enrollBtn").on("click",function(e){
 		
 	});
 
-	/* 이미지 업로드 */
+	/* 할인값 처리 */
 	$("input[name='bookPrice']").on("change", function(){
 		
 		let userInput = $("#discount_interface");
@@ -504,6 +504,9 @@ $("#enrollBtn").on("click",function(e){
 	    	dataType : 'json',
 	    	success : function(result){
 	    		console.log(result);
+	    	},
+	    	error : function(result){
+	    		alert("이미지 파일이 아닙니다.");
 	    	}
 		});		
 

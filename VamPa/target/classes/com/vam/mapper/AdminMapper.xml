@@ -7,9 +7,9 @@
   	<!-- 상품 등록 -->
   	<insert id="bookEnroll">
   	
-  		<selectKey resultType="int" keyProperty="bookId" order="BEFORE">
+  		<selectKey resultType="int" keyProperty="bookId" order="AFTER">
   		
-  			SELECT MAX(bookId)+1 FROM vam_book
+  			SELECT ISEQ$$_74040.currval from dual
   		
   		</selectKey>  	
   	

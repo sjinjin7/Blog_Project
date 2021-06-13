@@ -7,11 +7,11 @@
   	<!-- 상품 등록 -->
   	<insert id="bookEnroll">
   	
-  		<selectKey resultType="int" keyProperty="bookId" order="BEFORE">
+  		<selectKey resultType="int" keyProperty="bookId" order="AFTER">
   		
-  			SELECT MAX(bookId)+1 FROM vam_book
+  			SELECT LAST_INSERT_ID()
   		
-  		</selectKey>  		
+  		</selectKey>		
   	
   		insert into vam_book(bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
 		values(#{bookName},#{authorId}, #{publeYear},#{publisher},#{cateCode},#{bookPrice},#{bookStock},#{bookDiscount},#{bookIntro},#{bookContents})

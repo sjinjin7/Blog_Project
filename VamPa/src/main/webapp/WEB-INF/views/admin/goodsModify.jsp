@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,6 @@
  <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-</head>
 </head>
 <body>
 
@@ -135,6 +136,17 @@
                     				<span class="ck_warn bookContents_warn">책 목차를 입력해주세요.</span>
                     			</div>
                     		</div>
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>상품 이미지</label>
+                    			</div>
+                    			<div class="form_section_content">
+									<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
+									<div id="uploadReslut">
+																		
+									</div>									
+                    			</div>
+                    		</div>                    		
                     		<input type="hidden" name='bookId' value="${goodsInfo.bookId}">
                    		</form>
                    			<div class="btn_section">
@@ -307,6 +319,44 @@
 			$(".span_discount").html(discountPrice);
 			$("#discount_interface").val(discountRate);
 				
+			
+			/* 기존 이미지 출력 */
+			let bookId = '<c:out value="${goodsInfo.bookId}"/>';
+			let uploadReslut = $("#uploadReslut");
+			
+			$.getJSON("/getAttachList", {bookId : bookId}, function(arr){
+				
+				console.log(arr);
+				
+				if(arr.length === 0){
+					
+					
+					let str = "";
+					str += "<div id='result_card'>";
+					str += "<img src='/resources/img/goodsNoImage.png'>";
+					str += "</div>";
+					
+					uploadReslut.html(str);				
+					return;
+				}
+				
+				let str = "";
+				let obj = arr[0];
+				
+				let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+				str += "<div id='result_card'";
+				str += "data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'";
+				str += ">";
+				str += "<img src='/display?fileName=" + fileCallPath +"'>";
+				str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
+				str += "<input type='hidden' name='imageList[0].fileName' value='"+ obj.fileName +"'>";
+				str += "<input type='hidden' name='imageList[0].uuid' value='"+ obj.uuid +"'>";
+				str += "<input type='hidden' name='imageList[0].uploadPath' value='"+ obj.uploadPath +"'>";				
+				str += "</div>";
+				
+				uploadReslut.html(str);			
+				
+			});// GetJSON				
 			
 		}); // document ready
 	

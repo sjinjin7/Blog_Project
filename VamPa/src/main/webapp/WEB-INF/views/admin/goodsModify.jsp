@@ -629,7 +629,7 @@
 	$("input[type='file']").on("change", function(e){
 		
 		/* 이미지 존재시 삭제 */
-		if($(".imgDeleteBtn").length > 0){
+		if($("#result_card").length > 0){
 			deleteFile();
 		}
 				

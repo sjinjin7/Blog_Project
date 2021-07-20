@@ -84,5 +84,12 @@
 		insert into vam_image(bookId, fileName, uploadPath, uuid) values (#{bookId}, #{fileName}, #{uploadPath}, #{uuid})
 	
 	</insert>	
+	
+	<!-- 지정 상품 이미지 전체 삭제 --> 
+	<delete id="deleteImageAll">
+	
+		delete FROM vam_image where bookId = #{bookId}
+	
+	</delete>		
 
   </mapper>

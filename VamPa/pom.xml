@@ -244,6 +244,20 @@
 		    <artifactId>thumbnailator</artifactId>
 		    <version>0.4.13</version>
 		</dependency>		
+		<!-- Quartz -->
+		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz-jobs -->
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz-jobs</artifactId>
+		    <version>2.3.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		    <version>2.3.2</version>
+		</dependency>		
+		
 	
 	
 		<!-- Test -->

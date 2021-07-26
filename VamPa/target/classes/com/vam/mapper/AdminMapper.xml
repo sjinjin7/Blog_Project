@@ -101,5 +101,12 @@
 		delete FROM vam_image where bookId = #{bookId}
 	
 	</delete>	
+	
+	<!-- 어제자 날자 이미지 리스트 -->
+	<select id="checkFileList" resultType="com.vam.model.AttachImageVO">
+	
+		select * from vam_image where uploadpath = to_char(sysdate -1, 'yyyy\mm\dd')	
+	
+	</select>
 
   </mapper>

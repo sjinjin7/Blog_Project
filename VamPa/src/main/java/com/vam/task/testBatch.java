@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.log4j.Log4j;
 
-@Component
+
 @Log4j
 public class testBatch {
 

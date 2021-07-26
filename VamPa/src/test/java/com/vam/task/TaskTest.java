@@ -78,7 +78,33 @@ public class TaskTest {
 		}
 		System.out.println("========================================");			
 		
-	
+		List<File> removeFileList = new ArrayList<File>(Arrays.asList(targetFile));
+		
+		System.out.println("removeFileList(필터 전) : ");		
+		removeFileList.forEach(file -> {
+			System.out.println(file);
+		});		
+		System.out.println("========================================");		
+		
+		for(File file : targetFile){
+			checkFilePath.forEach(checkFile ->{
+				if(file.toPath().equals(checkFile)) 
+					removeFileList.remove(file);	
+			});
+		}
+		
+		System.out.println("removeFileList(필터 후) : ");
+		removeFileList.forEach(file -> {
+			System.out.println(file);
+		});
+		System.out.println("========================================");		
+		
+		/* 파일 삭제 */
+		for(File file : removeFileList) {
+			System.out.println("삭제 : " + file);
+			file.delete();
+		}
+		
 	}
 	
 }

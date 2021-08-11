@@ -108,5 +108,12 @@
 		select * from vam_image where uploadpath = to_char(sysdate -1, 'yyyy\mm\dd')	
 	
 	</select>
+	
+	<!-- 지정 상품 이미지 정보 얻기 -->
+	<select id="getAttachInfo" resultType="com.vam.model.AttachImageVO">
+	
+		select * from vam_image where bookId = #{bookId}
+	
+	</select>	
 
   </mapper>

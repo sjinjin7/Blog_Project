@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.vam.mapper.BookMapper">
+
+	<!-- criteria(검색조건) -->
+	<sql id="criteria">
+		    <if test="keyword != null">
+				where (bookName like concat ('%', #{keyword}, '%'))
+		    </if>
+	</sql>
+	
+	<!-- 상품 검색 -->
+	<select id="getGoodsList" resultType="com.vam.model.BookVO">
+	
+			select  bookId, bookName, b.authorName, a.authorId, c.cateName, a.cateCode, publisher, publeYear, bookPrice
+			from vam_book a left outer join vam_author b on a.authorId = b.authorId
+			left outer join vam_bcate c on a.cateCode = c.cateCode
+			<include refid="criteria"></include>
+			order by bookId desc 
+			limit #{skip}, #{amount}	
+	
+	</select>
+	
+	<!-- 상품 총 개수 -->
+	<select id="goodsGetTotal" resultType="int">
+
+  		select count(*) from vam_book
+  		
+		<include refid="criteria"></include>
+		
+	</select>			
+	
+  </mapper>

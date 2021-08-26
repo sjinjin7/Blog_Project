@@ -30,6 +30,13 @@
   		
 		<include refid="criteria"></include>
 		
-	</select>			
+	</select>
+	
+	<!-- 작가 id 리스트 요청 -->
+	<select id="getAuthorIdList" resultType="String">
+	
+		select authorid from vam_author where authorname like concat ('%', #{keyword}, '%')
+	
+	</select>					
 	
   </mapper>

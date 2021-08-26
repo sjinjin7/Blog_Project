@@ -42,6 +42,14 @@
 		<include refid="criteria"></include> 
 		bookId >0
 		
+	</select>
+	
+	<!-- 작가 id 리스트 요청 -->
+	<select id="getAuthorIdList" resultType="String">
+	
+		select authorid from vam_author where authorName like '%' || #{keyword} || '%'
+	
 	</select>	
+		
 	
   </mapper>

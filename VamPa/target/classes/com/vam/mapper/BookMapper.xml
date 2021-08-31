@@ -6,9 +6,31 @@
 
 	<!-- criteria(검색조건) -->
 	<sql id="criteria">
-		    <if test="keyword != null">
-			    bookName like '%' || #{keyword} || '%' and
-			</if>
+
+	  	<trim prefix="(" suffix=") AND" prefixOverrides="AND">
+	  		<foreach item="type" collection="typeArr">
+	  			<trim prefix="AND">
+	  				<choose>
+	  					<when test="type == 'A'.toString()">
+	  						<trim prefixOverrides="or">
+			  					<foreach collection="authorArr" item="authorId">
+			  						<trim prefix="or">
+			  							authorId = #{authorId}
+			  						</trim>
+			  					</foreach>  						
+	  						</trim>
+	  					</when>
+	  					<when test="type == 'C'.toString()">
+	  						cateCode like '%' || #{cateCode} || '%'
+	  					</when>  					
+	  					<when test="type == 'T'.toString()">
+	  						bookName like '%' || #{keyword} || '%'
+	  					</when>  					
+	  				</choose>
+	  			</trim>
+	  		</foreach>
+	  	</trim>
+
 	</sql>
 
 	

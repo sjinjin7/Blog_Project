@@ -48,7 +48,7 @@
 	<!-- 상품 총 개수 -->
 	<select id="goodsGetTotal" resultType="int">
 
-  		select count(*) from vam_book
+  		select count(*) from vam_book a
   		
 		<include refid="criteria"></include>
 		

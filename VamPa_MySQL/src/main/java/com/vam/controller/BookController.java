@@ -82,7 +82,7 @@ public class BookController {
 	}	
 	
 	/* 상품 검색 */
-	@GetMapping("search")
+	@GetMapping("/search")
 	public String searchGoodsGET(Criteria cri, Model model) {
 		
 		logger.info("cri : " + cri);

@@ -93,6 +93,7 @@ a{
     font-weight: 600;	
 }	
 
+
 /* 로그인 버튼 영역 */
 .login_area{
 	width: 25%;
@@ -160,6 +161,15 @@ a{
 	text-align: left;
     margin-left: 10%;
 }
+
+/* 검색결과 없음 */
+.table_empty{
+	height: 50px;
+    text-align: center;
+    margin: 200px 0 215px 0px;
+    font-size: 25px;
+}
+
 
 /* footer navai 영역 */
 .footer_nav{

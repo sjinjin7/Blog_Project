@@ -41,7 +41,7 @@
 		    select * from(
 		        select /*+INDEX_DESC(vam_book SYS_C008227)*/ rownum as rn, bookId, bookName,
 		            (select authorName from vam_author where vam_book.authorId = vam_author.authorId) authorName, authorId,
-		            (select cateName from vam_bcate where vam_book.cateCode = vam_bcate.cateCode) cateName,cateCode, publisher, publeYear, bookPrice  
+		            (select cateName from vam_bcate where vam_book.cateCode = vam_bcate.cateCode) cateName,cateCode, publisher, publeYear, bookPrice,bookDiscount  
 		        from vam_book
 		        where 
 	    ]]>

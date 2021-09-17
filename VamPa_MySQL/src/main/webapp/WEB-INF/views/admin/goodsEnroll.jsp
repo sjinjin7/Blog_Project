@@ -14,7 +14,36 @@
  <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-</head>
+<style type="text/css">
+	#result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+	#result_card {
+		position: relative;
+	}
+	.imgDeleteBtn{
+	    position: absolute;
+	    top: 0;
+	    right: 5%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
+	
+</style>
 </head>
 <body>
 
@@ -135,14 +164,24 @@
                     				<span class="ck_warn bookContents_warn">책 목차를 입력해주세요.</span>
                     			</div>
                     		</div>
+                    		
                     		<div class="form_section">
                     			<div class="form_section_title">
                     				<label>상품 이미지</label>
                     			</div>
                     			<div class="form_section_content">
 									<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
+									<div id="uploadResult">
+									<!-- 
+										<div id="result_card">
+											<div class="imgDeleteBtn">x</div>
+											<img src="/display?fileName=test.png">
+										</div>
+										 -->																		
+									</div>
                     			</div>
-                    		</div>                        		
+                    		</div>                     		
+                    		
                    		</form>
                    			<div class="btn_section">
                    				<button id="cancelBtn" class="btn">취 소</button>
@@ -444,7 +483,24 @@ $("#enrollBtn").on("click",function(e){
 		
 	});	
 	
-	/* 이미지 업로드 */
+	$("input[name='bookPrice']").on("change", function(){
+		
+		let userInput = $("#discount_interface");
+		let discountInput = $("input[name='bookDiscount']");
+		
+		let discountRate = userInput.val();					// 사용자가 입력한 할인값
+		let sendDiscountRate = discountRate / 100;			// 서버에 전송할 할인값
+		let goodsPrice = $("input[name='bookPrice']").val();			// 원가
+		let discountPrice = goodsPrice * (1 - sendDiscountRate);		// 할인가격
+		
+		if(!isNaN(discountRate)){
+			$(".span_discount").html(discountPrice);	
+		}
+		
+		
+	});
+
+	/* 할인값 처리 */
 	$("input[name='bookPrice']").on("change", function(){
 		
 		let userInput = $("#discount_interface");
@@ -469,7 +525,7 @@ $("#enrollBtn").on("click",function(e){
 		if($(".imgDeleteBtn").length > 0){
 			deleteFile();
 		}
-				
+		
 		let formData = new FormData();
 		let fileInput = $('input[name="uploadFile"]');
 		let fileList = fileInput[0].files;
@@ -518,7 +574,8 @@ $("#enrollBtn").on("click",function(e){
 		
 		return true;		
 		
-	}
+	}	
+	
 	
 	/* 이미지 출력 */
 	function showUploadImage(uploadResultArr){
@@ -547,6 +604,7 @@ $("#enrollBtn").on("click",function(e){
    		uploadResult.append(str);     
         
 	}	
+	
 	
 	/* 이미지 삭제 버튼 동작 */
 	$("#uploadResult").on("click", ".imgDeleteBtn", function(e){
@@ -580,7 +638,8 @@ $("#enrollBtn").on("click",function(e){
 				alert("파일을 삭제하지 못하였습니다.")
 			}
 		});
-	}	
+	}
+	
 	
 </script> 				
 

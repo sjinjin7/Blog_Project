@@ -72,6 +72,23 @@
 		select authorid from vam_author where authorName like '%' || #{keyword} || '%'
 	
 	</select>	
+	
+	<!-- 국내 카테고리 리스트 -->
+	<select id="getCateCode1" resultType="com.vam.model.CateVO">
+	
+		<![CDATA[
+			select * from vam_bcate where cateCode > 100000 and cateCode < 200000
+		]]>
+	</select>
+	
+	<!-- 외국 카테고리 리스트 -->
+	<select id="getCateCode2" resultType="com.vam.model.CateVO">
+	
+		<![CDATA[
+			select * from vam_bcate where cateCode > 200000 and cateCode < 300000
+		]]>
+	
+	</select>		
 		
 	
   </mapper>

@@ -3,6 +3,7 @@ package com.vam.mapper;
 import java.util.List;
 
 import com.vam.model.BookVO;
+import com.vam.model.CateVO;
 import com.vam.model.Criteria;
 
 public interface BookMapper {
@@ -15,5 +16,11 @@ public interface BookMapper {
 	
 	/* 작가 id 리스트 요청 */
 	public String[] getAuthorIdList(String keyword);	
+	
+	/* 국내 카테고리 리스트 */
+	public List<CateVO> getCateCode1();
+	
+	/* 외국 카테고리 리스트 */
+	public List<CateVO> getCateCode2();		
 	
 }

@@ -89,6 +89,72 @@
 		]]>
 	
 	</select>		
+	
+	<!-- 검색 대상 카테고리 리스트 -->
+	<select id="getCateList" resultType="String">
+	
+		select DISTINCT cateCode from vam_book where 
+		<foreach item="type" collection="typeArr">		
+  				<choose>
+  					<when test="type == 'A'.toString()">
+  						<trim prefixOverrides="or">
+		  					<foreach collection="authorArr" item="authorId">
+		  						<trim prefix="or">
+		  							authorId = #{authorId}
+		  						</trim>
+		  					</foreach>  						
+  						</trim>
+  					</when>
+  					<when test="type == 'T'.toString()">
+  						bookName like '%' || #{keyword} || '%'
+  					</when>  					
+  				</choose>
+  		</foreach>
+	
+	</select>	
+	
+	<!-- 카테고리 정보(+검색대상 갯수) -->	
+	
+	<select id="getCateInfo" resultType="com.vam.model.CateFilterDTO">
+	
+		select DISTINCT count(*) cateCount, a.cateCode, b.cateName from vam_book a left join vam_bcate b on a.cateCode = b.cateCode
+		
+		where 
+
+		<foreach item="type" collection="typeArr">		
+  				<choose>
+  					<when test="type == 'A'.toString()">
+  					
+  						<trim prefix="(" suffix=")" prefixOverrides="or">
+  						
+		  					<foreach collection="authorArr" item="authorId">
+		  					
+		  						<trim prefix="or">
+		  						
+		  							authorId = #{authorId}
+		  							
+		  						</trim>
+		  						
+		  					</foreach>
+		  					  						
+  						</trim>
+  						
+  						and a.cateCode = #{cateCode}
+  						
+  					</when>
+  					
+  					<when test="type == 'T'.toString()">
+  					
+  						bookName like '%' || #{keyword} || '%' and a.cateCode = #{cateCode}
+  						 
+  					</when>
+  					  					
+  				</choose>
+  		</foreach>
+  		
+  		group by a.cateCode, b.cateName
+	
+	</select>		
 		
 	
   </mapper>

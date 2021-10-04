@@ -105,6 +105,13 @@ public class BookController {
 		
 		model.addAttribute("pageMaker", new PageDTO(cri, bookService.goodsGetTotal(cri)));
 		
+		String[] typeArr = cri.getType().split("");
+		
+		for(String s : typeArr) {
+			if(s.equals("T") || s.equals("A")) {
+				model.addAttribute("filter_info", bookService.getCateInfoList(cri));		
+			}
+		}
 		
 		return "search";
 		

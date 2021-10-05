@@ -90,6 +90,37 @@
 		
 			<!-- 게시물 o -->
 			<c:if test="${listcheck != 'empty'}">
+			
+				<div class="search_filter">
+					<div class="filter_button_wrap">
+						<button class="filter_button filter_active" id="filter_button_a">국내</button>
+						<button class="filter_button" id="filter_button_b">외국</button>
+					</div>
+					
+					<div class="filter_content filter_a">
+						<a>테스트용1</a>
+						<a>테스트용2</a>
+						<a>테스트용3</a>
+						<a>테스트용4</a>
+						<a>테스트용5</a>
+						<a>테스트용6</a>
+					</div>
+					<div class="filter_content filter_b">
+						<a>테스트용1</a>
+						<a>테스트용2</a>
+						<a>테스트용3</a>
+						<a>테스트용4</a>
+						<a>테스트용5</a>
+						<a>테스트용6</a>					
+					</div>		
+					
+					<form id="filter_form" action="/search" method="get" >
+						<input type="hidden" name="keyword">
+						<input type="hidden" name="cateCode">
+						<input type="hidden" name="type">
+					</form>						
+													
+				</div>			
 
 				<div class="list_search_result">
 					<table class="type_list">
@@ -262,6 +293,24 @@
 		
 	});		
 	
+	
+	/* 검색 필터 */
+	let buttonA = $("#filter_button_a");
+	let buttonB = $("#filter_button_b");
+	
+	buttonA.on("click", function(){
+		$(".filter_b").css("display", "none");
+		$(".filter_a").css("display", "block");		
+		buttonA.attr("class", "filter_button filter_active");
+		buttonB.attr("class", "filter_button");
+	});	
+	
+	buttonB.on("click", function(){
+		$(".filter_a").css("display", "none");
+		$(".filter_b").css("display", "block");
+		buttonB.attr("class", "filter_button filter_active");
+		buttonA.attr("class", "filter_button");		
+	});		
 	
 	$(document).ready(function(){
 		

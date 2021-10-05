@@ -259,6 +259,58 @@ a{
     font-size: 25px;
 }
 
+/* 필터정보 */
+.search_filter {
+    width: 85%;
+    margin: auto;
+	margin-top: 30px;
+    margin-bottom: 50px;    
+} 
+.filter_button_wrap {
+    width: 100%;
+}
+
+.filter_button_wrap button {
+    width: 50%;
+} 
+.filter_button{
+	background-color: #04AA6D;
+	border: 1px solid green;
+	color: white;
+	padding: 10px 24px;
+	cursor: pointer;
+	float: left;
+} 
+.filter_button_wrap:after {
+    content: "";
+    clear: both;
+    display: table;
+}  	
+.filter_button_wrap button:not(:last-child) {
+    border-right: none;
+} 
+.filter_button:hover {
+    background-color: #3e8e41;
+}
+.filter_active{
+	background-color: #045d3c;
+}
+.filter_content{
+	padding:20px 50px 20px 50px;
+	border: 1px solid gray;
+}
+.filter_content a:not(:first-child){
+	margin-left: 10px;
+}
+.filter_a{
+	display: block;
+}
+
+.filter_b{
+	display: none;
+}
+
+
 
 /* footer navai 영역 */
 .footer_nav{

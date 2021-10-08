@@ -98,20 +98,18 @@
 					</div>
 					
 					<div class="filter_content filter_a">
-						<a>테스트용1</a>
-						<a>테스트용2</a>
-						<a>테스트용3</a>
-						<a>테스트용4</a>
-						<a>테스트용5</a>
-						<a>테스트용6</a>
+						<c:forEach items="${filter_info}" var="filter">
+							<c:if test="${filter.cateGroup eq '1'}">
+								<a href="${filter.cateCode}">${filter.cateName}(${filter.cateCount})</a>
+							</c:if>
+						</c:forEach>
 					</div>
 					<div class="filter_content filter_b">
-						<a>테스트용1</a>
-						<a>테스트용2</a>
-						<a>테스트용3</a>
-						<a>테스트용4</a>
-						<a>테스트용5</a>
-						<a>테스트용6</a>					
+						<c:forEach items="${filter_info}" var="filter">
+							<c:if test="${filter.cateGroup eq '2'}">
+								<a href="${filter.cateCode}">${filter.cateName}(${filter.cateCount})</a>
+							</c:if>
+						</c:forEach>
 					</div>		
 					
 					<form id="filter_form" action="/search" method="get" >
@@ -311,6 +309,26 @@
 		buttonB.attr("class", "filter_button filter_active");
 		buttonA.attr("class", "filter_button");		
 	});		
+	
+	/* 필터링 태그 동작 */
+	$(".filter_content a").on("click", function(e){
+		e.preventDefault();
+		
+		let type = '<c:out value="${pageMaker.cri.type}"/>';
+		if(type === 'A' || type === 'T'){
+			type = type + 'C';	
+		}
+		let keyword = '<c:out value="${pageMaker.cri.keyword}"/>';
+		let cateCode= $(this).attr("href");
+		
+		$("#filter_form input[name='keyword']").val(keyword);
+		$("#filter_form input[name='cateCode']").val(cateCode);
+		$("#filter_form input[name='type']").val(type);
+		$("#filter_form").submit();
+		
+	});
+	
+	
 	
 	$(document).ready(function(){
 		

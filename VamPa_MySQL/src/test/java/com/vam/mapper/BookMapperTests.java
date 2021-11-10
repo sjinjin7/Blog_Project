@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.vam.model.BookVO;
 import com.vam.model.CateFilterDTO;
 import com.vam.model.Criteria;
 
@@ -53,7 +54,7 @@ public class BookMapperTests {
 	*/
 	
 	/* 카테고리 리스트 얻기 */
-	
+	/*
 	@Test
 	public void getCateListTest1() {
 		
@@ -75,10 +76,11 @@ public class BookMapperTests {
 		
 		
 	}
-	
+	*/
 	
 	
 	/* 카테고리 정보 얻기 */	
+	/*
 	@Test
 	public void getCateInfoTest1() {
 		
@@ -95,8 +97,17 @@ public class BookMapperTests {
 		mapper.getCateInfo(cri);
 		
 	}	
-	
-
+	*/
+	/* 상품 정보 */
+	@Test
+	public void getGoodsInfo() {
+		int bookId = 26;
+		BookVO goodsInfo = mapper.getGoodsInfo(bookId);
+		System.out.println("===========================");
+		System.out.println(goodsInfo);
+		System.out.println("===========================");
+		
+	}
 	
 	
 	

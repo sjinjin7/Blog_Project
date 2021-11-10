@@ -155,6 +155,17 @@
   		group by a.cateCode, b.cateName
 	
 	</select>		
+	
+	<!-- 상품 정보 -->
+	<select id="getGoodsInfo" resultType="com.vam.model.BookVO">
+	
+			select a.BOOKID, a.BOOKNAME, a.AUTHORID, b.AUTHORNAME, a.PUBLEYEAR, a.PUBLISHER, a.CATECODE, c.CATENAME, a.BOOKPRICE, a.BOOKSTOCK, a.BOOKDISCOUNT, a.BOOKINTRO, a.BOOKCONTENTS
+			from vam_book a left outer join vam_author b on a.authorId = b.authorId
+			left outer join vam_bcate c on a.catecode = c.catecode
+			where bookid = ${bookId}	
+	
+	</select>	
+	
 		
 	
   </mapper>

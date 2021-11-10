@@ -79,7 +79,7 @@ public class BookMapperTests {
 	*/
 	
 	/* 검색 (동적 쿼리 적용) - 작가*/
-	
+	/*
 	@Test 
 	public void getGoodsListTest1() {
 		//
@@ -100,7 +100,7 @@ public class BookMapperTests {
 		System.out.println("list : " + list);
 		
 	}
-	
+	*/
 	
 	
 	
@@ -199,6 +199,7 @@ public class BookMapperTests {
 	
 	
 	/* 카테고리 리스트 */
+	/*
 	@Test
 	public void getCateListTest1() {
 		
@@ -220,9 +221,10 @@ public class BookMapperTests {
 		
 		
 	}	
+	*/
 	
-	
-	/* 카테고리 정보 얻기 */	
+	/* 카테고리 정보 얻기 */
+	/*
 	@Test
 	public void getCateInfoTest1() {
 		
@@ -239,9 +241,18 @@ public class BookMapperTests {
 		mapper.getCateInfo(cri);
 		
 	}	
-		
+	*/
 	
-
+	/* 상품 정보 */
+	@Test
+	public void getGoodsInfo() {
+		int bookId = 26;
+		BookVO goodsInfo = mapper.getGoodsInfo(bookId);
+		System.out.println("===========================");
+		System.out.println(goodsInfo);
+		System.out.println("===========================");
+		
+	}
 			
 		
 	

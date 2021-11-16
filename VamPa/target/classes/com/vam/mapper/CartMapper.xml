@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.vam.mapper.CartMapper">
+
+	<!-- 카트 추가 -->
+	<insert id="addCart">
+	
+		insert into vam_cart(memberId, bookId, bookCount)
+		values(#{memberId}, #{bookId}, #{bookCount}) 
+	
+	</insert>
+	
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+	
+		delete from vam_cart where cartId = #{cartId}
+	
+	</delete>
+	
+	<!-- 카트 수량 수정 -->
+	<update id="modifyCount">
+	
+		update vam_cart set bookCount=#{bookCount} where cartId = #{cartId}
+	
+	</update>
+	
+	
+	<!-- 카트 목록 -->
+	<select id="getCart" resultType="com.vam.model.CartDTO">
+	
+		select a.cartId, a.memberId, a.bookId, a.bookCount, b.bookName, b.bookPrice, b.bookDiscount
+		from vam_cart a left outer join vam_book b on a.bookId = b.bookId
+		where memberId = #{memberId}	
+	
+	</select>
+	
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="com.vam.model.CartDTO">
+	
+		select * from vam_cart 
+		where memberId = #{memberId} and bookId = #{bookId}
+	
+	</select>	
+	
+	
+  </mapper>

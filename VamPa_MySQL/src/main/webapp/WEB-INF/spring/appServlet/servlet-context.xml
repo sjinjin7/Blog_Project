@@ -33,6 +33,10 @@
 			<mapping path="/admin/**"></mapping>
 			<beans:bean id="AdminIntreceptor" class="com.vam.interceptor.AdminInterceptor"></beans:bean>
 		</interceptor>
+		<interceptor>
+			<mapping path="/cart/**"/>
+			<beans:bean id="CartIntreceptor" class="com.vam.interceptor.CartInterceptor"></beans:bean>
+		</interceptor>		
 	</interceptors>	
 	
 	<!-- 업로드 관련 빈 -->

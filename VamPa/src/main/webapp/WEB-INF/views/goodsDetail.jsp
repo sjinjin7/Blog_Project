@@ -38,7 +38,7 @@
 						마이룸
 					</li>
 					<li>
-						장바구니
+						<a href="/cart/${member.memberId}">장바구니</a>
 					</li>
 				</c:if>				
 				<li>
@@ -123,7 +123,11 @@
 						<div class="discount_price">
 							판매가 : <span class="discount_price_number"><fmt:formatNumber value="${goodsInfo.bookPrice - (goodsInfo.bookPrice*goodsInfo.bookDiscount)}" pattern="#,### 원" /></span> 
 							[<fmt:formatNumber value="${goodsInfo.bookDiscount*100}" pattern="###" />% 
-							<fmt:formatNumber value="${goodsInfo.bookPrice*goodsInfo.bookDiscount}" pattern="#,### 원" /> 할인]</div>							
+							<fmt:formatNumber value="${goodsInfo.bookPrice*goodsInfo.bookDiscount}" pattern="#,### 원" /> 할인]
+						</div>
+						<div>
+							적립 포인트 : <span class="point_span"></span>원
+						</div>							
 					</div>			
 					<div class="line">
 					</div>	
@@ -231,7 +235,13 @@ $(document).ready(function(){
 	
 	$(".publeyear").html(publeYear);
 	
-});	
+	/* 포인트 삽입 */
+	let salePrice = "${goodsInfo.bookPrice - (goodsInfo.bookPrice*goodsInfo.bookDiscount)}"
+	let point = salePrice*0.05;
+	point = Math.floor(point);
+	$(".point_span").text(point);	
+	
+});	//$(document).ready(function(){
 
 
 // 수량 버튼 조작

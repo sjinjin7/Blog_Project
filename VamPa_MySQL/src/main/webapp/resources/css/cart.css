@@ -1,0 +1,475 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+/* 화면 전체 렙 */
+.wrapper{
+	width: 100%;
+}
+/* content 랩 */
+.wrap{
+	width : 1080px;
+	margin: auto;
+}
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area{
+	width: 100%;
+    height: 50px;
+    background-color: #f0f0f1;
+    position:relative;    
+}
+.top_gnb_area .list{
+	position: absolute;
+    top: 0px;
+    right: 0;
+    
+}
+.top_gnb_area .list li{
+	list-style: none;	
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+/* 로고, 검색, 로그인 */
+.top_area{
+	width: 100%;
+    height: 150px;
+    /* background-color: #f7f0b9; */
+}
+/* 로고 영역 */
+.logo_area{
+	width: 25%;
+	height: 100%;
+	float:left;
+}
+.logo_area img{
+	width: 100%;
+    height: 100%;
+}
+
+/* 검색 박스 영역 */
+.search_area{
+	width: 50%;
+	height: 100%;
+	float:left;	
+}
+.search_wrap{
+	width: 100%;
+    height: 100%;
+}
+#searchForm{
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_input{
+    display: flex;
+    height: 30%;
+    width: 80%;	
+}
+.search_input select{
+	width: 20%;
+    text-align: center;
+    font-size: 15px;	
+}
+.search_input input{
+    margin-left: 10px;
+    width: 57%;	
+    font-size: 18px;
+    padding-left: 2%;
+}
+.search_btn{
+	margin-left: 10px;
+    width: 17%;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 600;	
+}	
+
+
+/* 로그인 버튼 영역 */
+.login_area{
+	width: 25%;
+	height: 100%;
+	display: inline-block;	
+	text-align: center;		
+}
+.login_button{
+	height: 50%;
+    background-color: #D4DFE6;
+    margin-top: 30px;
+    line-height: 77px;
+    font-size: 40px;
+    font-weight: 900;
+    border-radius: 10px;
+    cursor: pointer;	
+}
+.login_area>span{
+	margin-top: 10px;
+    font-weight: 900;
+    display: inline-block;
+}
+.login_button{
+	height : 50%;
+	background-color: #D4DFE6;
+	margin-top:30px;
+}
+
+/* 제품 목록 네비 */
+.navi_bar_area{
+	width: 100%;
+    height: 70px;
+    background-color: #7696fd;
+}
+
+/* 홈페이지 메인 제품 목록  */
+.content_area{
+	width: 100%;
+    min-height: 1000px;
+}
+	 table{
+	 	border-collapse: collapse;
+	 	width: 100%;
+	 }
+	 .table_text_align_center{
+				text-align: center;
+	 }	
+	 caption{
+	    visibility: hidden;
+	    width: 0;
+	    height: 0;
+	    font-size: 0;
+	    line-height: 0;
+	    overflow: hidden; 
+	 }	  
+
+	 .content_subject{
+		height: 110px;
+	    line-height: 110px;
+	    background-color: #5080bd;
+	    margin-bottom: 60px; 
+	 
+	 }
+		 .content_subject span{ 
+		    padding-left: 30 px;
+		    display: inline-block;
+		    color: white;
+		    font-size: 50px;
+		    font-weight: bolder; 
+		 }
+	 
+	 .content_totalCount_section{
+	 	margin-bottom: 12px;
+	 }
+	 .content_btn_section{
+	 	margin-top: 20px;
+	 	text-align: right;
+	 }
+	 	.content_btn_section a{
+	    color: #fefeff;
+	    background-color: #365fdd;
+	    min-width: 125px;
+	    padding: 17px 25px;
+	    display: inline-block;
+	    height: 39px;
+	    font-size: 23px;
+	    font-weight: bold;
+	    text-align: center;
+	    margin-right: 14px;
+	    line-height: 39px; 	
+	 	}
+	 
+
+	 .subject_table{
+		font-size: 14px;
+	    line-height: 20px;
+	    width: 100%;
+	    text-align: center; 	
+	 }
+
+		 th{
+		text-align: center;
+	    color: #333;
+	    border-bottom: 1px solid #e7e7e7;
+	    border-top: 1px solid #3084d9;
+	    background: #f4f9fd;
+	    padding: 2px 0;	 
+		 }
+		.td_width_1{
+			width: 5%;
+		}	 	 	 
+		.td_width_2{
+			width: 10%;
+		}	 	 
+		.td_width_3{
+			width: 25%;
+		}	 
+		.td_width_4{
+			width: 15%;
+		}	
+		.cart_table{
+			font-size: 14px;
+			line-height: 20px;
+		}  
+			.cart_table tr{
+				height: 110px;
+			}
+			.price_td{
+				padding-left: 5px;
+			}
+				.red_color{
+					color : red;
+				}
+				.green_color{
+					color : green;
+				}
+			.cart_table td{
+				border-bottom: 1px solid #e7e7e7;
+			}
+			.quantity_div{
+				position: relative;
+			    width: 42px;
+			    height: 25px;
+			    text-align: left;
+			    margin: 5px auto;		
+			}
+			.quantity_input{
+				position: absolute;
+				width: 27px;
+			    height: 23px;
+			    text-align: center;
+			    border: 1px solid #c6c6c6;
+			    border-right: 0px;
+			    line-height: 19px;
+			    font-size: 12px;
+			    color: #4c4848;	
+			    left: 0;
+			}
+			.quantity_btn{
+				position: absolute;
+			    border: 1px solid #aaa;
+			    color: #3a60df;
+			    width: 14px;
+			    height: 13px;
+			    padding: 0px;
+			    background-color: #fff;
+			    font-weight: bold;
+			    font-size: 7px;
+			    line-height: 6px;
+			    vertical-align: middle;	
+			}
+			.plus_btn{
+				top: 0;
+				right: 0
+			}
+			.minus_btn{
+				bottom: 0;
+				right: 0
+			}		
+			.quantity_modify_btn{
+				border: 1px solid #d0d0d0;
+			    height: 13px;
+			    line-height: 13px;
+			    background-color: #fff;
+			    text-align: center;
+			    width: 28px;
+			    display: inline-block;
+			    padding: 3px 6px 2px;
+			    margin-top: 3px;		
+			}
+			.table_text_align_center{
+				text-align: center;
+			}
+			.delete_btn{
+				width: 40px;		
+			}
+		
+	.content_total_section{
+		    background-color: rgb(227, 237, 247);
+	}		
+		.total_wrap{
+			width: 80%;
+		    margin: auto;
+		    padding: 10px 0 10px 0;	
+		}
+			.total_wrap td{
+				width : 50%;
+			}
+			.finalTotalPrice_span{
+				color: #854A72;
+				font-size: 17px;
+				font-weight: bold;
+			}
+			.totalPoint_span{
+				font-size: 17px;
+				font-weight: bold;		
+			}
+			.boundary_div{
+				font-size: 0;
+			    border: 1px dotted #d1c7c7;
+			    margin: 5px 0 5px 0;		
+			}
+
+
+
+/* 로그인 성공 영역 */
+.login_success_area{
+	height: 62%;
+    width: 80%;
+    border: 2px solid #7474ad;
+    border-radius: 15px;
+    margin: 5% auto;
+    padding-top: 5%;
+}
+.login_success_area>a{
+    font-size: 15px;
+    font-weight: 900;
+    display: inline-block;
+    margin-top: 5px;
+    background: #e1e5e8;
+    width: 82px;
+    height: 22px;
+    line-height: 22px;
+    border-radius: 25px;
+    color: #606267;    
+}
+.login_success_area>span{
+	display : block;
+	text-align: left;
+    margin-left: 10%;
+}
+
+/* 검색결과 없음 */
+.table_empty{
+	height: 50px;
+    text-align: center;
+    margin: 200px 0 215px 0px;
+    font-size: 25px;
+}
+
+/* 필터정보 */
+.search_filter {
+    width: 85%;
+    margin: auto;
+	margin-top: 30px;
+    margin-bottom: 50px;    
+} 
+.filter_button_wrap {
+    width: 100%;
+}
+
+.filter_button_wrap button {
+    width: 50%;
+} 
+.filter_button{
+	background-color: #04AA6D;
+	border: 1px solid green;
+	color: white;
+	padding: 10px 24px;
+	cursor: pointer;
+	float: left;
+} 
+.filter_button_wrap:after {
+    content: "";
+    clear: both;
+    display: table;
+}  	
+.filter_button_wrap button:not(:last-child) {
+    border-right: none;
+} 
+.filter_button:hover {
+    background-color: #3e8e41;
+}
+.filter_active{
+	background-color: #045d3c;
+}
+.filter_content{
+	padding:20px 50px 20px 50px;
+	border: 1px solid gray;
+}
+.filter_content a:not(:first-child){
+	margin-left: 10px;
+}
+.filter_a{
+	display: block;
+}
+
+.filter_b{
+	display: none;
+}
+
+
+
+/* footer navai 영역 */
+.footer_nav{
+	width:100%;
+	height:50px;
+}
+.footer_nav_container{
+	width: 100%;
+	height: 100%;
+	background-color:#8EC0E4;
+}
+.footer_nav_container>ul{
+	font-weight : bold;
+	float:left;
+	list-style:none;
+	position:relative;
+	padding-top:10px;
+	line-height: 27px;
+	font-family: dotum;
+	margin-left: 10px;
+}
+.footer_nav_container>ul>li{
+	display:inline;
+	width: 45px;
+	height: 19px;
+	padding: 10px 9px 0 10px;
+}
+.footer_nav_container>ul>span{
+	margin: 0 4px;
+}
+/* footer 영역 */
+.footer{
+	width:100%;
+	height:130px;
+	background-color:#D4DFE6;
+	padding-bottom : 50px;
+}
+.footer_container{
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.footer_left>img {
+	width: 150%;
+    height: 130px;
+    margin-left: -20px;
+    margin-top: -12px;
+}
+.footer_left{
+	float :left;
+	width: 170px;
+	margin-left: 20px;
+	margin-top : 30px;
+	
+}
+.footer_right{
+	float :left;
+	width: 680px;
+	margin-left: 70px;
+	margin-top : 30px;
+}
+
+
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}

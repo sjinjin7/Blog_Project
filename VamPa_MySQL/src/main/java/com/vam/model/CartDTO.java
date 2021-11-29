@@ -1,5 +1,7 @@
 package com.vam.model;
 
+import java.util.List;
+
 public class CartDTO {
 
     private int cartId;
@@ -25,7 +27,11 @@ public class CartDTO {
     
     private int point;
     
-    private int totalPoint;       
+    private int totalPoint;  
+    
+	/* 상품 이미지 */
+	private List<AttachImageVO> imageList;	    
+    
 
 	public int getCartId() {
 		return cartId;
@@ -89,7 +95,7 @@ public class CartDTO {
 
 	public int getTotalPrice() {
 		return totalPrice;
-	}
+	}	
 	
 	public int getPoint() {
 		return point;
@@ -98,6 +104,14 @@ public class CartDTO {
 	public int getTotalPoint() {
 		return totalPoint;
 	}
+	
+	public List<AttachImageVO> getImageList() {
+		return imageList;
+	}
+
+	public void setImageList(List<AttachImageVO> imageList) {
+		this.imageList = imageList;
+	}	
 
 	public void initSaleTotal() {
 		this.salePrice = (int) (this.bookPrice * (1-this.bookDiscount));
@@ -111,7 +125,7 @@ public class CartDTO {
 		return "CartDTO [cartId=" + cartId + ", memberId=" + memberId + ", bookId=" + bookId + ", bookCount="
 				+ bookCount + ", bookName=" + bookName + ", bookPrice=" + bookPrice + ", bookDiscount=" + bookDiscount
 				+ ", salePrice=" + salePrice + ", totalPrice=" + totalPrice + ", point=" + point + ", totalPoint="
-				+ totalPoint + "]";
-	}			
+				+ totalPoint + ", imageList=" + imageList + "]";
+	}		
 	
 }

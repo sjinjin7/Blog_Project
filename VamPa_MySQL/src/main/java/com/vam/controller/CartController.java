@@ -54,6 +54,16 @@ public class CartController {
 		model.addAttribute("cartInfo", cartService.getCartList(memberId));
 		
 		return "/cart";
-	}		
+	}	
+	
+	/* 장바구니 수량 수정 */
+	@PostMapping("/cart/update")
+	public String updateCartPOST(CartDTO cart) {
+		
+		cartService.modifyCount(cart);
+		
+		return "redirect:/cart/" + cart.getMemberId();
+		
+	}	
 	
 }

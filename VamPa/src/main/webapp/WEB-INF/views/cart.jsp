@@ -95,6 +95,11 @@
 			<!-- cartInfo -->
 			<div class="content_totalCount_section">
 				
+				<!-- 체크박스 전체 여부 -->
+				<div class="all_check_input_div">
+					<input type="checkbox" class="all_check_input input_size_20" checked="checked"><span class="all_chcek_span">전체선택</span>
+				</div>				
+				
 				<table class="subject_table">
 					<caption>표 제목 부분</caption>
 					<tbody>
@@ -116,6 +121,7 @@
 						<c:forEach items="${cartInfo}" var="ci">
 							<tr>
 								<td class="td_width_1 cart_info_td">
+									<input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
 									<input type="hidden" class="individual_bookPrice_input" value="${ci.bookPrice}">
 									<input type="hidden" class="individual_salePrice_input" value="${ci.salePrice}">
 									<input type="hidden" class="individual_bookCount_input" value="${ci.bookCount}">
@@ -274,25 +280,58 @@
 $(document).ready(function(){
 	
 	/* 종합 정보 섹션 정보 삽입 */
+	setTotalInfo();	
+	
+});	
+
+/* 체크여부에따른 종합 정보 변화 */
+$(".individual_cart_checkbox").on("change", function(){
+	/* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+	setTotalInfo($(".cart_info_td"));
+});
+
+/* 체크박스 전체 선택 */
+$(".all_check_input").on("click", function(){
+
+	/* 체크박스 체크/해제 */
+	if($(".all_check_input").prop("checked")){
+		$(".individual_cart_checkbox").attr("checked", true);
+	} else{
+		$(".individual_cart_checkbox").attr("checked", false);
+	}
+	
+	/* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+	setTotalInfo($(".cart_info_td"));	
+	
+});
+
+
+/* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+function setTotalInfo(){
+	
 	let totalPrice = 0;				// 총 가격
 	let totalCount = 0;				// 총 갯수
 	let totalKind = 0;				// 총 종류
 	let totalPoint = 0;				// 총 마일리지
 	let deliveryPrice = 0;			// 배송비
-	let finalTotalPrice = 0; 		// 최종 가격(총 가격 + 배송비)	
+	let finalTotalPrice = 0; 		// 최종 가격(총 가격 + 배송비)
+
 	
 	$(".cart_info_td").each(function(index, element){
 		
-		// 총 가격
-		totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
-		// 총 갯수
-		totalCount += parseInt($(element).find(".individual_bookCount_input").val());
-		// 총 종류
-		totalKind += 1;
-		// 총 마일리지
-		totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
+		if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//체크여부
+			// 총 가격
+			totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+			// 총 갯수
+			totalCount += parseInt($(element).find(".individual_bookCount_input").val());
+			// 총 종류
+			totalKind += 1;
+			// 총 마일리지
+			totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());			
+		}
 
-	});	
+	});
+	
 	
 	/* 배송비 결정 */
 	if(totalPrice >= 30000){
@@ -301,12 +340,12 @@ $(document).ready(function(){
 		deliveryPrice = 0;
 	} else {
 		deliveryPrice = 3000;	
-	}	
+	}
 	
-	/* 최종 가격 */
-	finalTotalPrice = totalPrice + deliveryPrice;
+		finalTotalPrice = totalPrice + deliveryPrice;
 	
-	/* 값 삽입 */
+	/* ※ 세자리 컴마 Javscript Number 객체의 toLocaleString() */
+	
 	// 총 가격
 	$(".totalPrice_span").text(totalPrice.toLocaleString());
 	// 총 갯수
@@ -319,8 +358,9 @@ $(document).ready(function(){
 	$(".delivery_price").text(deliveryPrice);	
 	// 최종 가격(총 가격 + 배송비)
 	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
-	
-});	
+}
+
+
 </script>
 
 </body>

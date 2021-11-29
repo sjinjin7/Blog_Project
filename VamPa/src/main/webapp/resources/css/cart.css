@@ -316,6 +316,19 @@ a{
 			    border: 1px dotted #d1c7c7;
 			    margin: 5px 0 5px 0;		
 			}
+			
+		.input_size_20{
+			width:20px;
+			height:20px;
+		}
+		.all_check_input{
+			margin: 18px 0 18px 18px;
+		}
+		.all_chcek_span{
+			padding-left: 8px;
+	    	font-size: 20px;
+	    	font-weight: bold;		
+		}			
 
 
 

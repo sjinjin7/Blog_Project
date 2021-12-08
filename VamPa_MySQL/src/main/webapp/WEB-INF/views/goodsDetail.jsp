@@ -123,7 +123,11 @@
 						<div class="discount_price">
 							판매가 : <span class="discount_price_number"><fmt:formatNumber value="${goodsInfo.bookPrice - (goodsInfo.bookPrice*goodsInfo.bookDiscount)}" pattern="#,### 원" /></span> 
 							[<fmt:formatNumber value="${goodsInfo.bookDiscount*100}" pattern="###" />% 
-							<fmt:formatNumber value="${goodsInfo.bookPrice*goodsInfo.bookDiscount}" pattern="#,### 원" /> 할인]</div>							
+							<fmt:formatNumber value="${goodsInfo.bookPrice*goodsInfo.bookDiscount}" pattern="#,### 원" /> 할인]
+						</div>
+						<div>
+							적립 포인트 : <span class="point_span"></span>원
+						</div>							
 					</div>			
 					<div class="line">
 					</div>	
@@ -158,7 +162,11 @@
 			<div class="content_bottom">
 				리뷰
 			</div>
-
+			<!-- 주문 form -->
+			<form action="/order/${member.memberId}" method="get" class="order_form">
+				<input type="hidden" name="orders[0].bookId" value="${goodsInfo.bookId}">
+				<input type="hidden" name="orders[0].bookCount" value="">
+			</form>	
 		</div>
 		
 		<!-- Footer 영역 -->
@@ -231,7 +239,13 @@ $(document).ready(function(){
 	
 	$(".publeyear").html(publeYear);
 	
-});	
+	/* 포인트 삽입 */
+	let salePrice = "${goodsInfo.bookPrice - (goodsInfo.bookPrice*goodsInfo.bookDiscount)}"
+	let point = salePrice*0.05;
+	point = Math.floor(point);
+	$(".point_span").text(point);	
+	
+});	//$(document).ready(function(){
 
 
 // 수량 버튼 조작
@@ -275,7 +289,12 @@ const form = {
 			alert("로그인이 필요합니다.");	
 		}
 	}
-
+	/* 바로구매 버튼 */
+	$(".btn_buy").on("click", function(){
+		let bookCount = $(".quantity_input").val();
+		$(".order_form").find("input[name='orders[0].bookCount']").val(bookCount);
+		$(".order_form").submit();
+	});
 
 </script>
 

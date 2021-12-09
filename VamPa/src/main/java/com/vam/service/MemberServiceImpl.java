@@ -34,6 +34,14 @@ public class MemberServiceImpl implements MemberService{
 		return membermapper.memberLogin(member);
 	}
 	
+	/* 주문자 정보 */
+	@Override
+	public MemberVO getMemberInfo(String memberId) {
+		
+		return membermapper.getMemberInfo(memberId);
+		
+	}
+	
 	
 	
 }

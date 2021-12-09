@@ -13,4 +13,7 @@ public interface MemberService {
 	/* 로그인 */
 	public MemberVO memberLogin(MemberVO member) throws Exception;
 	
+	/* 주문자 정보 */
+	public MemberVO getMemberInfo(String memberId);		
+	
 }

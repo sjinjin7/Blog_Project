@@ -235,9 +235,43 @@
 						</tbody>
 					</table>
 				</div>				
-				
-				
 				<!-- 주문 종합 정보 -->
+				<div class="total_info_div">
+					<!-- 가격 종합 정보 -->
+					<div class="total_info_price_div">
+						<ul>
+							<li>
+								<span class="price_span_label">상품 금액</span>
+								<span class="totalPrice_span">100000</span>원
+							</li>
+							<li>
+								<span class="price_span_label">배송비</span>
+								<span class="delivery_price_span">100000</span>원
+							</li>
+																					<li>
+								<span class="price_span_label">할인금액</span>
+								<span class="usePoint_span">100000</span>원
+							</li>
+							<li class="price_total_li">
+								<strong class="price_span_label total_price_label">최종 결제 금액</strong>
+								<strong class="strong_red">
+									<span class="total_price_red finalTotalPrice_span">
+										1500000
+									</span>원
+								</strong>
+							</li>
+							<li class="point_li">
+								<span class="price_span_label">적립예정 포인트</span>
+								<span class="totalPoint_span">7960원</span>
+							</li>
+						</ul>
+					</div>
+					<!-- 버튼 영역 -->
+					<div class="total_info_btn_div">
+						<a class="order_btn">결제하기</a>
+					</div>
+				</div>				
+				
 			</div>			
 			
 		</div>
@@ -284,6 +318,14 @@
 </div>	<!-- class="wrapper" -->
 
 <script>
+
+$(document).ready(function(){
+	
+	/* 주문 조합정보란 최신화 */
+	setTotalInfo();
+	
+});
+
 
 /* 주소입력란 버튼 동작(숨김, 등장) */
 function showAdress(className){
@@ -371,6 +413,9 @@ $(".order_point_input").on("propertychange change keyup paste input", function()
 		$(this).val(maxPoint);
 	}	
 	
+	/* 주문 조합정보란 최신화 */
+	setTotalInfo();	
+	
 });
 
 
@@ -399,10 +444,69 @@ $(".order_point_input_btn").on("click", function(){
 		//글 변경
 		$(".order_point_input_btn_Y").css("display", "none");
 		$(".order_point_input_btn_N").css("display", "inline-block");		
-	}		
+	}	
+	
+	/* 주문 조합정보란 최신화 */
+	setTotalInfo();	
 	
 });
 
+
+/* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+function setTotalInfo(){
+
+	let totalPrice = 0;				// 총 가격
+	let totalCount = 0;				// 총 갯수
+	let totalKind = 0;				// 총 종류
+	let totalPoint = 0;				// 총 마일리지
+	let deliveryPrice = 0;			// 배송비
+	let usePoint = 0;				// 사용 포인트(할인가격)
+	let finalTotalPrice = 0; 		// 최종 가격(총 가격 + 배송비)	
+	
+	$(".goods_table_price_td").each(function(index, element){
+		// 총 가격
+		totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+		// 총 갯수
+		totalCount += parseInt($(element).find(".individual_bookCount_input").val());
+		// 총 종류
+		totalKind += 1;
+		// 총 마일리지
+		totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
+	});	
+
+	/* 배송비 결정 */
+	if(totalPrice >= 30000){
+		deliveryPrice = 0;
+	} else if(totalPrice == 0){
+		deliveryPrice = 0;
+	} else {
+		deliveryPrice = 3000;	
+	}
+	
+	finalTotalPrice = totalPrice + deliveryPrice;	
+	
+	/* 사용 포인트 */
+	usePoint = $(".order_point_input").val();
+	
+	finalTotalPrice = totalPrice - usePoint;	
+	
+	/* 값 삽입 */
+	// 총 가격
+	$(".totalPrice_span").text(totalPrice.toLocaleString());
+	// 총 갯수
+	$(".goods_kind_div_count").text(totalCount);
+	// 총 종류
+	$(".goods_kind_div_kind").text(totalKind);
+	// 총 마일리지
+	$(".totalPoint_span").text(totalPoint.toLocaleString());
+	// 배송비
+	$(".delivery_price_span").text(deliveryPrice.toLocaleString());	
+	// 최종 가격(총 가격 + 배송비)
+	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
+	// 할인가(사용 포인트)
+	$(".usePoint_span").text(usePoint.toLocaleString());	
+	
+}
 
 </script>
 

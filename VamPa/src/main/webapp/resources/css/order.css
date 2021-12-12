@@ -330,7 +330,64 @@ height: 110px;
     font-size: 12px;
 }
 
-
+/* 주문 종합 정보 */
+.total_info_div{
+	position:absolute;
+	top: 0;
+	right : 0;
+	width : 300px;
+	border : 1px solid #333;
+	border-top-width:2px;	
+	
+}
+.total_info_price_div{
+	width: 90%;
+    margin: auto;
+	position: relative;
+}
+.total_info_div ul{
+	list-style: none;
+}
+.total_info_div li{
+	text-align: right;
+	margin-top:10px;
+}
+.price_span_label{
+	float: left;
+}
+.price_total_li{
+	border-top: 1px solid #ddd;
+	padding-top: 20px;
+}
+.strong_red{
+	color: red;
+}
+.total_price_red{
+	font-size: 25px;
+}
+.total_price_label{
+	margin-top: 5px;
+}
+.point_li{
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    margin: 10px -15px 0;
+}
+.total_info_btn_div{
+	border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 15px 20px;
+}
+.order_btn{
+    display: inline-block;
+    font-size: 21px;
+    line-height: 50px;
+    width: 200px;
+    height: 50px;
+    background-color: #365fdd;
+    color: #fff;
+    font-weight: bold;
+}
 
 
 

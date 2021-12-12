@@ -192,7 +192,9 @@
 							<c:forEach items="${orderList}" var="ol">
 								<tr>
 									<td>
-										<!-- 이미지 <td>-->
+										<div class="image_wrap" data-bookid="${ol.imageList[0].bookId}" data-path="${ol.imageList[0].uploadPath}" data-uuid="${ol.imageList[0].uuid}" data-filename="${ol.imageList[0].fileName}">
+											<img>
+										</div>
 									</td>
 									<td>${ol.bookName}</td>
 									<td class="goods_table_price_td">
@@ -323,6 +325,26 @@ $(document).ready(function(){
 	
 	/* 주문 조합정보란 최신화 */
 	setTotalInfo();
+	
+	/* 이미지 삽입 */
+	$(".image_wrap").each(function(i, obj){
+		
+		const bobj = $(obj);
+		
+		if(bobj.data("bookid")){
+			const uploadPath = bobj.data("path");
+			const uuid = bobj.data("uuid");
+			const fileName = bobj.data("filename");
+			
+			const fileCallPath = encodeURIComponent(uploadPath + "/s_" + uuid + "_" + fileName);
+			
+			$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+		} else {
+			$(this).find("img").attr('src', '/resources/img/goodsNoImage.png');
+		}
+		
+	});		
+	
 	
 });
 

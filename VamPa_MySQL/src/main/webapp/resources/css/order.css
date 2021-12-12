@@ -389,6 +389,17 @@ height: 110px;
     font-weight: bold;
 }
 
+/* 이미지 */
+.image_wrap{
+	width: 100%;
+	height: 100%;
+}
+.image_wrap img{
+    max-width: 85%;
+    height: auto;
+    display: block;		
+}
+
 
 
 

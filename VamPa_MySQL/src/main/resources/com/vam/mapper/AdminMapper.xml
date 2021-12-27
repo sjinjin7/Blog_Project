@@ -105,5 +105,29 @@
 		select * from vam_image where bookId = #{bookId}
 	
 	</select>		
+	
+	<!-- 주문 리스트 -->
+	<select id="getOrderList" resultType="com.vam.model.OrderDTO">	
+			
+			select orderId, memberId, orderstate, orderdate
+		    from vam_order 
+		    <if test="keyword != null">
+		    	where memberId like concat('%',#{keyword}, '%')
+		    </if>
+		    order by orderdate desc
+		    limit #{skip}, #{amount}
+		    
+	</select>	
+	
+	<!-- 상품 총 개수 -->
+	<select id="getOrderTotal" resultType="int">
+	
+		select count(*) from vam_order
+		
+	    <if test="keyword != null">
+	    	where memberId like concat('%',#{keyword}, '%')
+	    </if>
+	
+	</select>	
 
   </mapper>

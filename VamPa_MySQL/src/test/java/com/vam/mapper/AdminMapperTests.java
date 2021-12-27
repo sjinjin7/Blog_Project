@@ -1,15 +1,12 @@
 package com.vam.mapper;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vam.model.AttachImageVO;
-import com.vam.model.BookVO;
+import com.vam.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -177,6 +174,7 @@ public class AdminMapperTests {
 	*/
 	
 	/* 지정 상품 이미지 정보 얻기 */
+	/*
 	@Test
 	public void getAttachInfoTest() {
 		
@@ -186,7 +184,25 @@ public class AdminMapperTests {
 		
 		System.out.println("list : " + list);
 		
-	}	
+	}
+	*/
+	
+	/* 주문 현황 리스트 */
+	@Test
+	public void getOrderList() {
+		
+		Criteria cri = new Criteria();
+		
+		//String memberId = "admin";
+		//String memberId = "";
+		String memberId = null;
+		cri.setKeyword(memberId);
+		
+		mapper.getOrderList(cri);
+		mapper.getOrderTotal(cri);		
+		
+	}
+	
 	
 	
 	

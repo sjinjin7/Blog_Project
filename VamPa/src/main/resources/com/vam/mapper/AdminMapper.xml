@@ -115,5 +115,36 @@
 		select * from vam_image where bookId = #{bookId}
 	
 	</select>	
+	
+	<!-- 주문 리스트 -->
+	<select id="getOrderList" resultType="com.vam.model.OrderDTO">
+		<![CDATA[
+		select * 
+		from(
+		    select rownum rn, orderId, memberId, orderstate, orderdate
+		    from vam_order
+		    where rownum <= #{pageNum} * #{amount} 
+		]]>    
+		<if test="keyword != null">
+			and memberId like '%'||#{keyword}||'%'
+		</if>
+		<![CDATA[
+		    
+		    order by orderdate desc
+		    )
+		where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>	
+	
+	<!-- 상품 총 개수 -->
+	<select id="getOrderTotal" resultType="int">
+	
+		select count(*) from vam_order
+		
+	    <if test="keyword != null">
+	    	where memberId like '%'||#{keyword}||'%'
+	    </if>
+	
+	</select>		
 
   </mapper>

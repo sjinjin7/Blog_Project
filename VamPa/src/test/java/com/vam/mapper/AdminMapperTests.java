@@ -10,6 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.vam.model.AttachImageVO;
+import com.vam.model.Criteria;
+import com.vam.model.OrderDTO;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -175,6 +177,7 @@ public class AdminMapperTests {
 	*/
 	
 	/* 지정 상품 이미지 정보 얻기 */
+	/*
 	@Test
 	public void getAttachInfoTest() {
 		
@@ -185,7 +188,27 @@ public class AdminMapperTests {
 		System.out.println("list : " + list);
 		
 	}		
+	*/
 	
+	/* 주문 현황 리스트 */
+	@Test
+	public void getOrderList() {
+		
+		Criteria cri = new Criteria();
+		
+		//String memberId = "admin";
+		//String memberId = "";
+		String memberId = null;
+		cri.setKeyword(memberId);
+		
+		List<OrderDTO> orderList = mapper.getOrderList(cri);
+		mapper.getOrderTotal(cri);
+		
+		for(OrderDTO dto : orderList) {
+			System.out.println("dto : " + dto);
+		}
+		
+	}	
 	
 	
 }

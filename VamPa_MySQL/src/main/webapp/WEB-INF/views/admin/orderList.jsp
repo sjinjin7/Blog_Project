@@ -48,7 +48,9 @@
 	                    			<td><fmt:formatDate value="${list.orderDate}" pattern="yyyy-MM-dd"/></td>
 	                    			<td><c:out value="${list.orderState}"/></td>
 	                    			<td>
-	                    			
+	                    				<c:if test="${list.orderState == '배송준비' }">
+	                    					<button class="delete_btn" data-orderid="${list.orderId}">취소</button>
+	                    				</c:if>
 	                    			</td>
 	                    		</tr>
 	                    		</c:forEach>
@@ -112,7 +114,16 @@
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-					</form>                                    
+					</form>   
+					
+                    <form id="deleteForm" action="/admin/orderCancle" method="post">
+                    	<input type="hidden" name="orderId">
+						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+						<input type="hidden" name="memberId" value="${member.memberId}">
+                    </form>						
+					                                 
  
  				<%@include file="../includes/admin/footer.jsp" %>
 
@@ -150,6 +161,16 @@ $(".pageMaker_btn a").on("click", function(e){
 	
 	moveForm.submit();
 	
+});
+
+$(".delete_btn").on("click", function(e){
+	
+	e.preventDefault();
+	
+	let id = $(this).data("orderid");
+	
+	$("#deleteForm").find("input[name='orderId']").val(id);
+	$("#deleteForm").submit();
 });
 
 </script>

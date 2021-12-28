@@ -36,10 +36,12 @@ import com.vam.model.AttachImageVO;
 import com.vam.model.AuthorVO;
 import com.vam.model.BookVO;
 import com.vam.model.Criteria;
+import com.vam.model.OrderCancelDTO;
 import com.vam.model.OrderDTO;
 import com.vam.model.PageDTO;
 import com.vam.service.AdminService;
 import com.vam.service.AuthorService;
+import com.vam.service.OrderService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -54,6 +56,9 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	/* 관리자 메인 페이지 이동 */
 	@RequestMapping(value="main", method = RequestMethod.GET)
@@ -484,6 +489,16 @@ public class AdminController {
 		
 		
 		return "/admin/orderList";
+	}	
+	
+	
+	/* 주문삭제 */
+	@PostMapping("/orderCancle")
+	public String orderCanclePOST(OrderCancelDTO dto) {
+		
+		orderService.orderCancle(dto);
+		
+		return "redirect:/admin/orderList?keyword=" + dto.getKeyword() + "&amount=" + dto.getAmount() + "&pageNum=" + dto.getPageNum();
 	}		
 	
 }

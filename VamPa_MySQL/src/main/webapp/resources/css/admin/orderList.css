@@ -128,6 +128,17 @@ ul{
 	font-weight: 600;
 }
 
+.delete_btn{
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+    background-color: #f7564b;	
+}
+.delete_btn:hover{
+	background-color : #da190b;
+}
+
 .table_empty{
 	height: 50px;
     text-align: center;

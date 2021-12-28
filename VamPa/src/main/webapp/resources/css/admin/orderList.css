@@ -1,0 +1,259 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+a:link {color: black;}
+a:visited {color: black;}
+a:active {color: black;}
+a:hover {color: black;}
+ul{
+    list-style: none;
+}
+/* 화면 전체 렙 */
+.wrapper{
+	width: 100%;
+}
+/* content 랩 */
+.wrap{
+	width : 1080px;
+	margin: auto;
+}
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area{
+	width: 100%;
+    height: 50px;
+    background-color: #f0f0f1;
+    position:relative;
+}
+.top_gnb_area .list{
+	position: absolute;
+    top: 0px;
+    right: 0;
+    
+}
+.top_gnb_area .list li{
+	list-style: none;	
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+/* 관리제 페이지 상단 현페이지 정보 */
+.admin_top_wrap{
+    height:110px;
+    line-height: 110px;
+    background-color: #5080bd;
+    margin-bottom: 15px;
+}
+.admin_top_wrap>span{
+    margin-left: 30px;
+    display:inline-block;
+    color: white;
+    font-size: 50px;
+    font-weight: bolder;
+}
+/* 관리자 wrap(네비+컨텐츠) */
+.admin_wrap{
+    
+    
+}
+
+/* 관리자페이지 네비 영역 */
+.admin_navi_wrap{
+    width: 20%;
+    height: 300px;
+    float:left;
+    height: 100%;
+}
+.admin_navi_wrap li{
+    display: block;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+.admin_navi_wrap li a{
+    display: block;
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bolder;
+}
+ 
+.admin_list_06{
+    background-color: #c8c8c8;
+} 
+
+
+/* 관리자페이지 컨텐츠 영역 */
+.admin_content_wrap{
+    width: 80%;
+    float:left;
+    min-height:700px;
+}
+.admin_content_subject{	/* 관리자 컨텐츠 제목 영역 */
+    font-size: 40px;
+    font-weight: bolder;
+    padding-left: 15px;
+    background-color: #6AAFE6;
+    height: 80px;
+    line-height: 80px;
+    color: white;	
+}
+	/* 작가 목록 영역 */
+.order_table_wrap{
+	padding: 20px 35px;
+	min-height: 570px;
+}
+.order_table{
+	margin: auto;
+    width: 100%;
+    border: 1px solid #d3d8e1;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.order_table td{
+	padding: 10px 5px;
+	border : 1px solid #e9ebf0;
+}
+.order_table thead{
+	background-color: #f8f9fd;	
+	font-weight: 600;
+}
+
+.table_empty{
+	height: 50px;
+    text-align: center;
+    margin: 200px 0 215px 0px;
+    font-size: 25px;
+}
+
+	/* 검색 영역 */
+.search_wrap{
+	margin-top:15px;
+}
+.search_input{
+    position: relative;
+    text-align:center;	
+}
+.search_input input[name='keyword']{
+	padding: 4px 10px;
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+}
+.search_btn{
+	height: 32px;
+    width: 80px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    position: absolute;
+    margin-left: 15px;
+    background-color: #c3daf7;
+}
+
+	/* 페이지 버튼 인터페이스 */
+.pageMaker_wrap{
+	text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.pageMaker{
+    list-style: none;
+    display: inline-block;
+}	
+.pageMaker_btn {
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+}
+.active{
+	border : 2px solid black;
+	font-weight:400;
+}
+.next, .prev {
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+.next a, .prev a {
+    color: #ccc;
+}
+
+
+/* footer navai 영역 */
+.footer_nav{
+	width:100%;
+	height:50px;
+}
+.footer_nav_container{
+	width: 100%;
+	height: 100%;
+	background-color:#8EC0E4;
+}
+.footer_nav_container>ul{
+	font-weight : bold;
+	float:left;
+	list-style:none;
+	position:relative;
+	padding-top:10px;
+	line-height: 27px;
+	font-family: dotum;
+	margin-left: 10px;
+}
+.footer_nav_container>ul>li{
+	display:inline;
+	width: 45px;
+	height: 19px;
+	padding: 10px 9px 0 10px;
+}
+.footer_nav_container>ul>span{
+	margin: 0 4px;
+}
+/* footer 영역 */
+.footer{
+	width:100%;
+	height:130px;
+	background-color:#D4DFE6;
+	padding-bottom : 50px;
+}
+.footer_container{
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.footer_left>img {
+	width: 150%;
+    height: 130px;
+    margin-left: -20px;
+    margin-top: -12px;
+}
+.footer_left{
+	float :left;
+	width: 170px;
+	margin-left: 20px;
+	margin-top : 30px;
+	
+}
+.footer_right{
+	float :left;
+	width: 680px;
+	margin-left: 70px;
+	margin-top : 30px;
+}
+
+
+
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}

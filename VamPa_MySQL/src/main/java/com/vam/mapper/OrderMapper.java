@@ -1,5 +1,7 @@
 package com.vam.mapper;
 
+import java.util.List;
+
 import com.vam.model.BookVO;
 import com.vam.model.MemberVO;
 import com.vam.model.OrderDTO;
@@ -24,6 +26,15 @@ public interface OrderMapper {
 	public int deductMoney(MemberVO member);	
 	
 	/* 주문 재고 차감 */
-	public int deductStock(BookVO book);		
+	public int deductStock(BookVO book);	
+	
+	/* 주문 취소 */
+	public int orderCancle(String orderId);
+	
+	/* 주문 상품 정보(주문취소) */
+	public List<OrderItemDTO> getOrderItemInfo(String orderId);
+	
+	/* 주문 정보(주문취소) */
+	public OrderDTO getOrder(String orderId);	
 	
 }

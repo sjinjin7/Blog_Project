@@ -48,5 +48,28 @@
 		update vam_book set bookStock = #{bookStock} where bookId = #{bookId}
 	
 	</update>	
+	
+	<!-- 주문취소 -->
+	<update id="orderCancle">
+	
+		update vam_order set orderState = '주문취소' where orderId = #{orderId}
+		
+	</update>	
+
+	<!-- 주문 상품 정보(주문취소) -->
+	<select id="getOrderItemInfo" resultType="com.vam.model.OrderItemDTO">
+	
+		select * from vam_orderItem
+		where orderId = #{orderId}
+	
+	</select>
+	
+	<!-- 주문 정보(주문 취소) -->
+	<select id="getOrder" resultType="com.vam.model.OrderDTO">
+	
+		select * from vam_order
+		where orderId = #{orderId}
+	
+	</select>
 
   </mapper>

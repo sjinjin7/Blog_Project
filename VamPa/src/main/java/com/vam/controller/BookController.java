@@ -129,6 +129,16 @@ public class BookController {
 		return "/goodsDetail";
 	}	
 	
+	/* 리뷰 쓰기 */
+	@GetMapping("/replyEnroll/{memberId}")
+	public String replyEnrollWindowGET(@PathVariable("memberId")String memberId, int bookId, Model model) {
+		BookVO book = bookService.getBookIdName(bookId);
+		model.addAttribute("bookInfo", book);
+		model.addAttribute("memberId", memberId);
+		
+		return "/replyEnroll";
+	}	
+	
 	
 	
 }

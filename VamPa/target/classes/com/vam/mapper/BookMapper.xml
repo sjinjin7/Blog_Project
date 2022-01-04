@@ -166,6 +166,14 @@
 	
 	</select>	
 	
+	<select id="getBookIdName" resultType="com.vam.model.BookVO">
+	
+		select bookId, bookName from vam_book 
+		where bookId = #{bookId}
+	
+	
+	</select>	
+	
 		
 	
   </mapper>

@@ -10,5 +10,12 @@
   		insert into vam_reply(bookId, memberId, content, rating) values(#{bookId}, #{memberId}, #{content}, #{rating})
   	
   	</insert> 
+  	
+ 	<select id="checkReply" resultType="integer">
+	
+		select replyId from vam_reply 
+		where memberId = #{memberId} and bookId = #{bookId}
+	
+	</select>  	
  
   </mapper>

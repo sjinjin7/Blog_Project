@@ -21,4 +21,12 @@ public class ReplyController {
 		replyService.enrollReply(dto);
 	}		
 	
+	/* 댓글 체크 */
+	/* memberId, bookId 파라미터 */
+	/* 존재 : 1 / 존재x : 0 */
+	@PostMapping("/check")
+	public String replyCheckPOST(ReplyDTO dto) {
+		return replyService.checkReply(dto);
+	}	
+	
 }

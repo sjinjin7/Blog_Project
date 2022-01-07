@@ -314,12 +314,29 @@ const form = {
 		const memberId = '${member.memberId}';
 		const bookId = '${goodsInfo.bookId}';
 
-		let popUrl = "/replyEnroll/" + memberId + "?bookId=" + bookId;
-		console.log(popUrl);
-		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
-		
-		window.open(popUrl,"리뷰 쓰기",popOption);					
+		$.ajax({
+			data : {
+				bookId : bookId,
+				memberId : memberId
+			},
+			url : '/reply/check',
+			type : 'POST',
+			success : function(result){
 
+				if(result === '1'){
+					alert("이미 등록된 리뷰가 존재 합니다.")
+				} else if(result === '0'){
+					let popUrl = "/replyEnroll/" + memberId + "?bookId=" + bookId;
+					console.log(popUrl);
+					let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
+					
+					window.open(popUrl,"리뷰 쓰기",popOption);							
+				}				
+				
+			}
+		});			
+
+		
 	});		
 	
 	

@@ -17,5 +17,29 @@
 		where memberId = #{memberId} and bookId = #{bookId}
 	
 	</select>  	
+	
+  	<!-- 댓글 페이징 -->
+  	<select id="getReplyList" resultType="com.vam.model.ReplyDTO">
+  	
+  		<![CDATA[
+		select * from(  		
+			select rownum as rn, replyId, bookId, memberId, content, rating, regDate
+			from vam_reply
+			where rownum <= #{pageNum} * #{amount}  and bookId = #{bookId}	
+			order by regDate desc  	
+  			)
+  		where rn > (#{pageNum} -1) * #{amount}
+  		]]>	
+  		
+  	</select>
+  	
+  	<select id="getReplyTotal" resultType="int">
+  	
+  		select count(*)
+  		from vam_reply
+  		where bookId = #{bookId}
+  	
+  	</select>	
+	
  
   </mapper>

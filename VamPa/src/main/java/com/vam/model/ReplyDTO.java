@@ -2,6 +2,8 @@ package com.vam.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ReplyDTO {
 
 	private int replyId;
@@ -10,6 +12,7 @@ public class ReplyDTO {
 	
 	private String memberId;
 
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
 	private Date regDate;
 	
 	private String content;

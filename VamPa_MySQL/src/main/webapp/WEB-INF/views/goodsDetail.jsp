@@ -403,6 +403,19 @@ const form = {
 		amount : 10
 	}	
 	
+	/* 댓글 페이지 이동 버튼 동작 */
+	$(document).on('click', '.pageMaker_btn a', function(e){
+			
+		e.preventDefault();
+		
+		let page = $(this).attr("href");	
+		cri.pageNum = page;		
+		
+		replyListInit();
+			
+	 });
+	
+	
 	/* 댓글 데이터 서버 요청 및 댓글 동적 생성 메서드 */
 	let replyListInit = function(){
 		$.getJSON("/reply/list", cri , function(obj){

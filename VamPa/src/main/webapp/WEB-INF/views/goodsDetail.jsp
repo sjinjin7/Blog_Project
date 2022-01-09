@@ -168,7 +168,52 @@
 					<div class="reply_button_wrap">
 						<button>리뷰 쓰기</button>
 					</div>
-				</c:if>			
+				</c:if>		
+				
+				<div class="reply_not_div">
+					
+				</div>
+				<ul class="reply_content_ul">
+					<!-- 
+					<li>
+						<div class="comment_wrap">
+							<div class="reply_top">
+								<span class="id_span">sjinjin7</span>
+								<span class="date_span">2021-10-11</span>
+								<span class="rating_span">평점 : <span class="rating_value_span">4</span>점</span>
+								<a class="update_reply_btn">수정</a><a class="delete_reply_btn">삭제</a>
+							</div>
+							<div class="reply_bottom">
+								<div class="reply_bottom_txt">
+									사실 기대를 많이하고 읽기시작했는데 읽으면서 가가 쓴것이 맞는지 의심들게합니다 문체도그렇고 간결하지 않네요 제가 기대가 크던 작았던간에 책장이 사실 안넘겨집니다.
+								</div>
+							</div>
+						</div>
+					</li>
+					 -->
+				</ul>
+				<div class="repy_pageInfo_div">
+					<!-- 
+					<ul class="pageMaker">
+						<li class="pageMaker_btn prev">
+							<a>이전</a>
+						</li>
+						<li class="pageMaker_btn">
+							<a>1</a>
+						</li>
+						<li class="pageMaker_btn">
+							<a>2</a>
+						</li>
+						<li class="pageMaker_btn active">
+							<a>3</a>
+						</li>													
+						<li class="pageMaker_btn next">
+							<a>다음</a>
+						</li>
+					</ul>
+					 -->
+				</div>
+					
 				
 			</div>
 			<!-- 주문 form -->
@@ -253,6 +298,88 @@ $(document).ready(function(){
 	let point = salePrice*0.05;
 	point = Math.floor(point);
 	$(".point_span").text(point);	
+	
+	/* 리뷰 리스트 출력 */
+	
+	const bookId = '${goodsInfo.bookId}';	
+
+	$.getJSON("/reply/list", {bookId : bookId}, function(obj){
+		
+		if(obj.list.length === 0){
+			$(".reply_not_div").html('<span>리뷰가 없습니다.</span>');
+			$(".reply_content_ul").html('');
+			$(".pageMaker").html('');
+		} else{
+			
+			$(".reply_not_div").html('');
+			
+			const list = obj.list;
+			const pf = obj.pageInfo;
+			const userId = '${member.memberId}';		
+			
+			/* list */
+			
+			let reply_list = '';			
+			
+			$(list).each(function(i,obj){
+				reply_list += '<li>';
+				reply_list += '<div class="comment_wrap">';
+				reply_list += '<div class="reply_top">';
+				/* 아이디 */
+				reply_list += '<span class="id_span">'+ obj.memberId+'</span>';
+				/* 날짜 */
+				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
+				/* 평점 */
+				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
+				if(obj.memberId === userId){
+					reply_list += '<a class="update_reply_btn" href="'+ obj.replyId +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyId +'">삭제</a>';
+				}
+				reply_list += '</div>'; //<div class="reply_top">
+				reply_list += '<div class="reply_bottom">';
+				reply_list += '<div class="reply_bottom_txt">'+ obj.content +'</div>';
+				reply_list += '</div>';//<div class="reply_bottom">
+				reply_list += '</div>';//<div class="comment_wrap">
+				reply_list += '</li>';
+			});		
+			
+			$(".reply_content_ul").html(reply_list);			
+			
+			/* 페이지 버튼 */
+			
+			let reply_pageMaker = '';	
+			
+				/* prev */
+				if(pf.prev){
+					let prev_num = pf.pageStart -1;
+					reply_pageMaker += '<li class="pageMaker_btn prev">';
+					reply_pageMaker += '<a href="'+ prev_num +'">이전</a>';
+					reply_pageMaker += '</li>';	
+				}
+				/* numbre btn */
+				for(let i = pf.pageStart; i < pf.pageEnd+1; i++){
+					reply_pageMaker += '<li class="pageMaker_btn ';
+					if(pf.cri.pageNum === i){
+						reply_pageMaker += 'active';
+					}
+					reply_pageMaker += '">';
+					reply_pageMaker += '<a href="'+i+'">'+i+'</a>';
+					reply_pageMaker += '</li>';
+				}
+				/* next */
+				if(pf.next){
+					let next_num = pf.pageEnd +1;
+					reply_pageMaker += '<li class="pageMaker_btn next">';
+					reply_pageMaker += '<a href="'+ next_num +'">다음</a>';
+					reply_pageMaker += '</li>';	
+				}	
+				
+			$(".pageMaker").html(reply_pageMaker);				
+			
+		}
+
+		
+	});		
+	
 	
 });	//$(document).ready(function(){
 

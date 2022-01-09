@@ -192,9 +192,9 @@
 					</li>
 					 -->
 				</ul>
-				<div class="repy_pageInfo_div">
-					<!-- 
+				<div class="repy_pageInfo_div"> 
 					<ul class="pageMaker">
+					<!--					
 						<li class="pageMaker_btn prev">
 							<a>이전</a>
 						</li>
@@ -210,8 +210,8 @@
 						<li class="pageMaker_btn next">
 							<a>다음</a>
 						</li>
+					 -->						
 					</ul>
-					 -->
 				</div>
 					
 				
@@ -305,79 +305,8 @@ $(document).ready(function(){
 
 	$.getJSON("/reply/list", {bookId : bookId}, function(obj){
 		
-		if(obj.list.length === 0){
-			$(".reply_not_div").html('<span>리뷰가 없습니다.</span>');
-			$(".reply_content_ul").html('');
-			$(".pageMaker").html('');
-		} else{
-			
-			$(".reply_not_div").html('');
-			
-			const list = obj.list;
-			const pf = obj.pageInfo;
-			const userId = '${member.memberId}';		
-			
-			/* list */
-			
-			let reply_list = '';			
-			
-			$(list).each(function(i,obj){
-				reply_list += '<li>';
-				reply_list += '<div class="comment_wrap">';
-				reply_list += '<div class="reply_top">';
-				/* 아이디 */
-				reply_list += '<span class="id_span">'+ obj.memberId+'</span>';
-				/* 날짜 */
-				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
-				/* 평점 */
-				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
-				if(obj.memberId === userId){
-					reply_list += '<a class="update_reply_btn" href="'+ obj.replyId +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyId +'">삭제</a>';
-				}
-				reply_list += '</div>'; //<div class="reply_top">
-				reply_list += '<div class="reply_bottom">';
-				reply_list += '<div class="reply_bottom_txt">'+ obj.content +'</div>';
-				reply_list += '</div>';//<div class="reply_bottom">
-				reply_list += '</div>';//<div class="comment_wrap">
-				reply_list += '</li>';
-			});		
-			
-			$(".reply_content_ul").html(reply_list);			
-			
-			/* 페이지 버튼 */
-			
-			let reply_pageMaker = '';	
-			
-				/* prev */
-				if(pf.prev){
-					let prev_num = pf.pageStart -1;
-					reply_pageMaker += '<li class="pageMaker_btn prev">';
-					reply_pageMaker += '<a href="'+ prev_num +'">이전</a>';
-					reply_pageMaker += '</li>';	
-				}
-				/* numbre btn */
-				for(let i = pf.pageStart; i < pf.pageEnd+1; i++){
-					reply_pageMaker += '<li class="pageMaker_btn ';
-					if(pf.cri.pageNum === i){
-						reply_pageMaker += 'active';
-					}
-					reply_pageMaker += '">';
-					reply_pageMaker += '<a href="'+i+'">'+i+'</a>';
-					reply_pageMaker += '</li>';
-				}
-				/* next */
-				if(pf.next){
-					let next_num = pf.pageEnd +1;
-					reply_pageMaker += '<li class="pageMaker_btn next">';
-					reply_pageMaker += '<a href="'+ next_num +'">다음</a>';
-					reply_pageMaker += '</li>';	
-				}	
-				
-			$(".pageMaker").html(reply_pageMaker);				
-			
-		}
+		makeReplyContent(obj);
 
-		
 	});		
 	
 	
@@ -465,6 +394,102 @@ const form = {
 
 		
 	});		
+	
+
+	/* 댓글 페이지 정보 */
+	 const cri = {
+		bookId : '${goodsInfo.bookId}',
+		pageNum : 1,
+		amount : 10
+	}	
+	
+	/* 댓글 데이터 서버 요청 및 댓글 동적 생성 메서드 */
+	let replyListInit = function(){
+		$.getJSON("/reply/list", cri , function(obj){
+			
+			makeReplyContent(obj);
+			
+		});		
+	}	
+	
+	/* 댓글(리뷰) 동적 생성 메서드 */
+	function makeReplyContent(obj){
+		
+		if(obj.list.length === 0){
+			$(".reply_not_div").html('<span>리뷰가 없습니다.</span>');
+			$(".reply_content_ul").html('');
+			$(".pageMaker").html('');
+		} else{
+			
+			$(".reply_not_div").html('');
+			
+			const list = obj.list;
+			const pf = obj.pageInfo;
+			const userId = '${member.memberId}';		
+			
+			/* list */
+			
+			let reply_list = '';			
+			
+			$(list).each(function(i,obj){
+				reply_list += '<li>';
+				reply_list += '<div class="comment_wrap">';
+				reply_list += '<div class="reply_top">';
+				/* 아이디 */
+				reply_list += '<span class="id_span">'+ obj.memberId+'</span>';
+				/* 날짜 */
+				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
+				/* 평점 */
+				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
+				if(obj.memberId === userId){
+					reply_list += '<a class="update_reply_btn" href="'+ obj.replyId +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyId +'">삭제</a>';
+				}
+				reply_list += '</div>'; //<div class="reply_top">
+				reply_list += '<div class="reply_bottom">';
+				reply_list += '<div class="reply_bottom_txt">'+ obj.content +'</div>';
+				reply_list += '</div>';//<div class="reply_bottom">
+				reply_list += '</div>';//<div class="comment_wrap">
+				reply_list += '</li>';
+			});		
+			
+			$(".reply_content_ul").html(reply_list);			
+			
+			/* 페이지 버튼 */
+			
+			let reply_pageMaker = '';	
+			
+				/* prev */
+				if(pf.prev){
+					let prev_num = pf.pageStart -1;
+					reply_pageMaker += '<li class="pageMaker_btn prev">';
+					reply_pageMaker += '<a href="'+ prev_num +'">이전</a>';
+					reply_pageMaker += '</li>';	
+				}
+				/* numbre btn */
+				for(let i = pf.pageStart; i < pf.pageEnd+1; i++){
+					reply_pageMaker += '<li class="pageMaker_btn ';
+					if(pf.cri.pageNum === i){
+						reply_pageMaker += 'active';
+					}
+					reply_pageMaker += '">';
+					reply_pageMaker += '<a href="'+i+'">'+i+'</a>';
+					reply_pageMaker += '</li>';
+				}
+				/* next */
+				if(pf.next){
+					let next_num = pf.pageEnd +1;
+					reply_pageMaker += '<li class="pageMaker_btn next">';
+					reply_pageMaker += '<a href="'+ next_num +'">다음</a>';
+					reply_pageMaker += '</li>';	
+				}	
+				
+				console.log(reply_pageMaker);
+			$(".pageMaker").html(reply_pageMaker);				
+			
+		}		
+		
+	}
+	
 	
 	
 </script>

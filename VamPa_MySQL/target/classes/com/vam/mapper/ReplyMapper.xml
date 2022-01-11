@@ -36,5 +36,21 @@
   		where bookId = #{bookId}
   	
   	</select>	
+  	
+  	<!-- 댓글수정 -->
+  	<update id="updateReply">
+  	
+  		update vam_reply set content = #{content}, rating = #{rating}
+  		where replyId = #{replyId}
+  		
+  	</update>  	
+  	
+  	<!-- 댓글 수정 팝업창 -->
+ 	<select id="getUpdateReply" resultType="com.vam.model.ReplyDTO">
+	
+		select * from vam_reply
+		where replyId = #{replyId}
+		
+	</select> 	
  
   </mapper>

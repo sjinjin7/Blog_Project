@@ -15,4 +15,10 @@ public interface ReplyService {
 	/* 댓글 페이징 */
 	public ReplyPageDTO replyList(Criteria cri);	
 	
+	/* 댓글 수정 */
+	public int updateReply(ReplyDTO dto);	
+	
+	/* 댓글 한개 정보(수정페이지) */
+	public ReplyDTO getUpdateReply(int replyId);		
+	
 }

@@ -24,8 +24,10 @@ import com.vam.model.AttachImageVO;
 import com.vam.model.BookVO;
 import com.vam.model.Criteria;
 import com.vam.model.PageDTO;
+import com.vam.model.ReplyDTO;
 import com.vam.service.AttachService;
 import com.vam.service.BookService;
+import com.vam.service.ReplyService;
 
 @Controller
 public class BookController {
@@ -37,6 +39,9 @@ public class BookController {
 	
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private ReplyService replyService;	
 	
 	//메인 페이지 이동
 	@RequestMapping(value="/main", method = RequestMethod.GET)
@@ -138,6 +143,17 @@ public class BookController {
 		
 		return "/replyEnroll";
 	}	
+	
+	/* 리뷰 수정 팝업창 */
+	@GetMapping("/replyUpdate")
+	public String replyUpdateWindowGET(ReplyDTO dto, Model model) {
+		BookVO book = bookService.getBookIdName(dto.getBookId());
+		model.addAttribute("bookInfo", book);
+		model.addAttribute("replyInfo", replyService.getUpdateReply(dto.getReplyId()));
+		model.addAttribute("memberId", dto.getMemberId());
+		
+		return "/replyUpdate";
+	}		
 	
 	
 	

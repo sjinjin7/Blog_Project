@@ -43,6 +43,12 @@ public class ReplyController {
 	@PostMapping("/update")
 	public void replyModifyPOST(ReplyDTO dto) {
 		replyService.updateReply(dto);
+	}	
+	
+	/* 댓글 삭제 */
+	@PostMapping("/delete")
+	public void replyDeletePOST(ReplyDTO dto) {
+		replyService.deleteReply(dto);
 	}		
 	
 }

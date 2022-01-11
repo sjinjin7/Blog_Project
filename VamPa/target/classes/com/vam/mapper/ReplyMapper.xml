@@ -57,5 +57,13 @@
 		
 	</select> 	
 	
+  	<!-- 댓글 삭제 -->
+  	<delete id="deleteReply">
+  	
+  		DELETE FROM vam_reply
+  		WHERE replyId = #{replyId}
+  		
+  	</delete>		
+	
  
   </mapper>

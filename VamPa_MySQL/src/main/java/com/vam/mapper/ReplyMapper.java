@@ -23,6 +23,9 @@ public interface ReplyMapper {
 	public int updateReply(ReplyDTO dto);	
 	
 	/* 댓글 한개 정보(수정페이지) */
-	public ReplyDTO getUpdateReply(int replyId);		
+	public ReplyDTO getUpdateReply(int replyId);
+	
+	/* 댓글 삭제 */
+	public int deleteReply(int replyId);	
 	
 }

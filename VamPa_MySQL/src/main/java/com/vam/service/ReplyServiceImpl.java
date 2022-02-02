@@ -8,6 +8,7 @@ import com.vam.model.Criteria;
 import com.vam.model.PageDTO;
 import com.vam.model.ReplyDTO;
 import com.vam.model.ReplyPageDTO;
+import com.vam.model.UpdateReplyDTO;
 
 @Service
 public class ReplyServiceImpl implements ReplyService{
@@ -20,6 +21,8 @@ public class ReplyServiceImpl implements ReplyService{
 	public int enrollReply(ReplyDTO dto) {
 		
 		int result = replyMapper.enrollReply(dto);
+		
+		setRating(dto.getBookId());		
 		
 		return result;
 	}	
@@ -53,6 +56,8 @@ public class ReplyServiceImpl implements ReplyService{
 		
 		int result = replyMapper.updateReply(dto); 
 		
+		setRating(dto.getBookId());		
+		
 		return result;
 	}	
 	
@@ -67,7 +72,28 @@ public class ReplyServiceImpl implements ReplyService{
 		
 		int result = replyMapper.deleteReply(dto.getReplyId()); 
 		
+		setRating(dto.getBookId());		
+		
 		return result;
+	}
+	
+	public void setRating(int bookId) {
+		
+		Double ratingAvg = replyMapper.getRatingAverage(bookId);	
+		
+		if(ratingAvg == null) {
+			ratingAvg = 0.0;
+		}	
+		
+		ratingAvg = (double) (Math.round(ratingAvg*10));
+		ratingAvg = ratingAvg / 10;
+		
+		UpdateReplyDTO urd = new UpdateReplyDTO();
+		urd.setBookId(bookId);
+		urd.setRatingAvg(ratingAvg);	
+		
+		replyMapper.updateRating(urd);		
+		
 	}	
 	
 }

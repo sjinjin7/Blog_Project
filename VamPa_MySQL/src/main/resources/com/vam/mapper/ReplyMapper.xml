@@ -60,5 +60,21 @@
   		WHERE replyId = #{replyId}
   		
   	</delete>	
+  	
+  	   	<select id="getRatingAverage" resultType="double">
+  	
+  		select avg(rating)
+  		from vam_reply
+  		where bookId = #{bookId}
+  	
+  	</select>
+
+	<update id="updateRating">
+	
+		update vam_book
+		set ratingAvg = #{ratingAvg}
+		where bookId = #{bookId}
+	
+	</update>
  
   </mapper>

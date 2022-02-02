@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.vam.model.Criteria;
 import com.vam.model.ReplyDTO;
+import com.vam.model.UpdateReplyDTO;
 
 public interface ReplyMapper {
 	
@@ -27,5 +28,11 @@ public interface ReplyMapper {
 	
 	/* 댓글 삭제 */
 	public int deleteReply(int replyId);	
+	
+	/* 평점 평균 구하기 */
+	public Double getRatingAverage(int bookId);
+	
+	/* 평점 평균 반영하기 */
+	public int updateRating(UpdateReplyDTO dto);	
 	
 }

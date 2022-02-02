@@ -8,10 +8,14 @@
 <meta charset="UTF-8">
 <title>Welcome BookMall</title>
 <link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>  
+
 </head>
 <body>
 
@@ -109,7 +113,27 @@
 			</div>
 		</div>
 		<div class="content_area">
-			<h1>content area</h1>
+		
+			<div class="slide_div_wrap">
+				<div class="slide_div">
+					<div>
+						<a>
+							<img src="../resources/img/bnA_w01_a8daff.jpg">
+						</a>
+					</div>
+					<div>
+						<a>
+							<img src="../resources/img/bnD_w01_c3c5f7.jpg">
+						</a>
+					</div>
+					<div>
+						<a>
+							<img src="../resources/img/bnK_w01_c3c5f7.jpg">
+						</a>
+					</div>				
+				</div>	
+			</div>
+			
 		</div>
 		
 		<!-- Footer 영역 -->
@@ -154,6 +178,19 @@
 </div>	<!-- class="wrapper" -->
 
 <script>
+
+	$(document).ready(function(){
+		
+		$(".slide_div").slick(
+				{
+					dots: true,
+					autoplay : true,
+					autoplaySpeed: 5000
+				}				
+		);	
+		
+	});
+
 
 	/* gnb_area 로그아웃 버튼 작동 */
 	$("#gnb_logout_button").click(function(){

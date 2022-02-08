@@ -6,6 +6,7 @@ import com.vam.model.BookVO;
 import com.vam.model.CateFilterDTO;
 import com.vam.model.CateVO;
 import com.vam.model.Criteria;
+import com.vam.model.SelectDTO;
 
 public interface BookService {
 
@@ -28,6 +29,9 @@ public interface BookService {
 	public BookVO getGoodsInfo(int bookId);	
 	
 	/* 상품 id 이름 */
-	public BookVO getBookIdName(int bookId);	
+	public BookVO getBookIdName(int bookId);
+	
+	/* 평줌순 상품 정보 */
+	public List<SelectDTO> likeSelect();	
 	
 }

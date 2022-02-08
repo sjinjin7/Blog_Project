@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.vam.model.BookVO;
 import com.vam.model.Criteria;
+import com.vam.model.SelectDTO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -244,6 +245,7 @@ public class BookMapperTests {
 	*/
 	
 	/* 상품 정보 */
+	/*
 	@Test
 	public void getGoodsInfo() {
 		int bookId = 26;
@@ -251,6 +253,17 @@ public class BookMapperTests {
 		System.out.println("===========================");
 		System.out.println(goodsInfo);
 		System.out.println("===========================");
+		
+	}*/
+	
+	@Test
+	public void likeSelectTest() {
+		
+		
+		List<SelectDTO> likeSelect = mapper.likeSelect();
+		for(SelectDTO dto : likeSelect) {
+			System.out.println(dto);
+		}
 		
 	}
 			

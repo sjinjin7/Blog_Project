@@ -309,3 +309,70 @@ a{
     display: block;
 	margin: auto;    
 }
+
+/* 상품 평점순 노출 관련 태그 */
+.ls_wrap{
+    margin: 30px 0 30px 0;
+    padding: 0 10px 0 10px;
+}
+.ls_div_content{
+	width: 80%;
+    margin: auto;
+    height: 275px;
+    border: 1px solid #dadada;
+}
+.image_wrap{
+	width: 80%;
+    height: 60%;
+    margin: auto;
+    padding: 5% 0 5% 0;
+    display: flex;
+    align-items: center;    
+}
+.ls_category{
+	text-align: center;
+    font-size: 13px;
+    color: #3e74ab;
+}
+.ls_rating{
+	text-align: center;
+    font-size: 13px;
+    color: #e15b6e;
+}
+.ls_bookName{
+	text-align: center;
+    color: #333;
+    font-size: 15px;
+    font-weight: bold;
+}
+.ls_div_subject{
+	font-weight: bold;
+	font-size: 26px;
+	padding-bottom: 10px;
+}
+.ls_div_content_prev{
+    position: absolute;
+    top: 40%;
+    width: 40px;
+    height: 30px;
+    left: 27px;
+    font-weight: bold;
+    z-index: 1;
+    opacity: 35%;
+}
+.ls_div_content_prev:hover{
+   opacity: 80%;
+}
+.ls_div_content_next{
+    position: absolute;
+    top: 40%;
+    width: 40px;
+    height: 30px;
+    right: 27px;
+    font-weight: bold;
+    z-index: 1;
+    opacity: 35%;
+}
+.ls_div_content_next:hover{
+   opacity: 80%;
+}
